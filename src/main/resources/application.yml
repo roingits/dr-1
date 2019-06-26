@@ -1,0 +1,28 @@
+#端口号
+server:
+  port: 8080
+#  servlet:
+#    context-path: /tx
+
+#数据库链接
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver                                                        #时区
+    url: jdbc:mysql://localhost:3306/dr?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
+    username: root
+    password: root
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: cn.dr.zcw.entity  # 注意：对应实体类的路径
+  configuration:
+    auto-mapping-behavior: full         #映射级别
+
+#mybatis-plus:
+
+#book:
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#  author: 张三
