@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author zcw
- * @since 2019-06-27
+ * @since 2019-06-26
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -80,6 +80,10 @@ public class DrUser implements Serializable {
      * 最后一次更新时间
      */
     private LocalDateTime updateTime;
+    /**
+     * 验证码
+     */
+    private String email_code;
 
 
 }
