@@ -1196,6 +1196,16 @@
 
     </script>
 
+<!--    新闻块js    -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $.getJSON("test.js", { name: "John", time: "2pm" }, function(json){
+                alert("JSON Data: " + json.users[3].name);
+            });
+            $.getJSON("/new")
+        });
+    </script>
+
 </form>
 </body>
 </html>
