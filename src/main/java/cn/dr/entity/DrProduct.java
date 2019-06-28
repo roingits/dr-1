@@ -88,5 +88,14 @@ public class DrProduct implements Serializable {
      */
     private LocalDateTime updateTime;
 
+    /**
+     * 商品材质id
+     */
+    private Integer textureId;
+
+    /**
+     * 商品质量
+     */
+    private Integer quality;
 
 }

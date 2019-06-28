@@ -50,6 +50,7 @@ public class TxAdviceInterceptor {
         txMap.put("insert*", requiredTx);
         txMap.put("update*", requiredTx);
         txMap.put("del*", requiredTx);
+        //只读事务
         txMap.put("get*", readOnlyTx);
         txMap.put("query*", readOnlyTx);
         txMap.put("find*", readOnlyTx);
