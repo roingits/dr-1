@@ -33,9 +33,15 @@ public class DrApplicationController {
     public String login(){
         return "login";
     }
-    
+
+    /**
+     * 主页跳转注册页面
+     * @return reg.html
+     */
     @RequestMapping("/reg.html")
-    public String reg(){
+    public String register(){
         return "reg";
     }
+
+
 }
