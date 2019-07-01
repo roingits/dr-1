@@ -279,7 +279,7 @@
                 <!--验证身份end-->
                 <!--资讯内容的ul-->
                 <ul class="news-ul">
-                    <!--每一块li-->bkbook_right fr
+                    <!--每一块li-->
                     <li>
                         <div class="ul-top">
                             <a target="_blank" href="/shopyd"> <img width="235" height="130" alt="Darry Ring实体店"
@@ -1225,6 +1225,7 @@
 
     </script>
 
+<<<<<<< HEAD
     <!--    新闻块js    -->
     <script type="text/javascript">
         $(document).ready(function(){
@@ -1305,6 +1306,15 @@
                 }
             });
 
+=======
+<!--    新闻块js    -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $.getJSON("test.js", { name: "John", time: "2pm" }, function(json){
+                alert("JSON Data: " + json.users[3].name);
+            });
+            $.getJSON("/new")
+>>>>>>> origin/master
         });
     </script>
 

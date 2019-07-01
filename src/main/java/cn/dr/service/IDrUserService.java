@@ -9,8 +9,20 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author zcw
- * @since 2019-06-27
+ * @since 2019-06-26
  */
 public interface IDrUserService extends IService<DrUser> {
+    /**
+     * 邮箱注册，邮箱不能重复
+     * @param drUser
+     * @return
+     */
+    public int addDrUser(DrUser drUser);
+
+    /**
+     * 验证邮箱没有注册过
+     */
+    public boolean findByEmail(String email);
+
 
 }

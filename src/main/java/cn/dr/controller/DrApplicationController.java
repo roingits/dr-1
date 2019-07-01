@@ -9,11 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class DrApplicationController {
 
-    @RequestMapping("/")
-    public String toindex(){
-        return "index";
-    }
-    
     @RequestMapping("/index.html")
     public String index(){
         return "index";
@@ -47,7 +42,6 @@ public class DrApplicationController {
     public String register(){
         return "reg";
     }
-
 
     @RequestMapping("/test")
     public String test(){

@@ -18,7 +18,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author zcw
- * @since 2019-06-27
+ * @since 2019-06-26
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -79,16 +79,6 @@ public class DrProduct implements Serializable {
     private Integer status;
 
     /**
-     * 钻石重量
-     */
-    private Integer quality;
-
-    /**
-     * 商品材质id
-     */
-    private Integer textureId;
-
-    /**
      * 创建时间
      */
     private LocalDateTime createTime;
@@ -98,5 +88,14 @@ public class DrProduct implements Serializable {
      */
     private LocalDateTime updateTime;
 
+    /**
+     * 商品材质id
+     */
+    private Integer textureId;
+
+    /**
+     * 商品质量
+     */
+    private Integer quality;
 
 }

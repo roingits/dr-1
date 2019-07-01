@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author zcw
- * @since 2019-06-27
+ * @since 2019-06-26
  */
 public interface DrShippingMapper extends BaseMapper<DrShipping> {
 
