@@ -1225,88 +1225,87 @@
 
     </script>
 
-<<<<<<< HEAD
     <!--    新闻块js    -->
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function() {
 
-            //右侧模块
-            $.ajax({
-                async: false,
-                type : "POST",
-                url : "/dr-new/rightNew",
-                dataType : 'json',
-                success : function(json) {
-                    // $.getJSON("/dr-new/rightNew",function (json) {
-                    var rightStr = "";
-                    for (var i = 0; i < 3; i++) {
-                        rightStr +=
-                            "<div class=\"bkbook_right-allul\">\n" +
-                            "                    <!--左边图片-->\n" +
-                            "                    <div class=\"bkbook_right-fimg fl\">\n" +
-                            "                       <a target=\"_blank\" href=\"/news/4547.html\"> <img width=\"120\" height=\"72\" alt=\"陆烧林萧求婚戒指是什么\"\n" +
-                            "                           src=\"images/"
+                //右侧模块
+                $.ajax({
+                    async: false,
+                    type: "POST",
+                    url: "/dr-new/rightNew",
+                    dataType: 'json',
+                    success: function (json) {
+                        // $.getJSON("/dr-new/rightNew",function (json) {
+                        var rightStr = "";
+                        for (var i = 0; i < 3; i++) {
+                            rightStr +=
+                                "<div class=\"bkbook_right-allul\">\n" +
+                                "                    <!--左边图片-->\n" +
+                                "                    <div class=\"bkbook_right-fimg fl\">\n" +
+                                "                       <a target=\"_blank\" href=\"/news/4547.html\"> <img width=\"120\" height=\"72\" alt=\"陆烧林萧求婚戒指是什么\"\n" +
+                                "                           src=\"images/"
 
-                        $.ajax({
-                            async: false,
-                            type: "GET",
-                            url: "/dr-new-picture/rightNewPicture",
-                            data: {"newId": json[i * 3].id},
-                            dataType: 'json',
-                            success: function (data) {
-                                rightStr += data.subImages;
-                            }
-                        });
+                            $.ajax({
+                                async: false,
+                                type: "GET",
+                                url: "/dr-new-picture/rightNewPicture",
+                                data: {"newId": json[i * 3].id},
+                                dataType: 'json',
+                                success: function (data) {
+                                    rightStr += data.subImages;
+                                }
+                            });
 
-                        // $.getJSON("/dr-new/rightNewPicture", {"newId": json[i * 3].id}, function (json1) {
-                        //     str += json1.subImages;
-                        // });
+                            // $.getJSON("/dr-new/rightNewPicture", {"newId": json[i * 3].id}, function (json1) {
+                            //     str += json1.subImages;
+                            // });
 
-                        rightStr +=
-                            "\"/>\n" +
-                            "                       </a>\n" +
-                            "                    </div>\n" +
-                            "                    <!--左边图片end-->\n" +
-                            "                    <!--右边ul-->\n" +
-                            "                    <ul class=\"bkbook_left-secul bkbook_right-spcul\">\n" +
-                            "                        <li><a href=\"/news/4547.html\"> " + json[i * 3].title + "</a></li>\n" +
-                            "                        <li><a href=\"/news/4354.html\"> " + json[i * 3 + 1].title + "</a></li>\n" +
-                            "                        <li><a href=\"/news/4322.html\"> " + json[i * 3 + 2].title + "</a></li>\n" +
-                            "                    </ul>\n" +
-                            "                <!--右边ul end-->\n" +
-                            "                </div>"
+                            rightStr +=
+                                "\"/>\n" +
+                                "                       </a>\n" +
+                                "                    </div>\n" +
+                                "                    <!--左边图片end-->\n" +
+                                "                    <!--右边ul-->\n" +
+                                "                    <ul class=\"bkbook_left-secul bkbook_right-spcul\">\n" +
+                                "                        <li><a href=\"/news/4547.html\"> " + json[i * 3].title + "</a></li>\n" +
+                                "                        <li><a href=\"/news/4354.html\"> " + json[i * 3 + 1].title + "</a></li>\n" +
+                                "                        <li><a href=\"/news/4322.html\"> " + json[i * 3 + 2].title + "</a></li>\n" +
+                                "                    </ul>\n" +
+                                "                <!--右边ul end-->\n" +
+                                "                </div>"
+
+                        }
+
+                        $("#rightNew").html(rightStr);
+
+                        //下侧模块
+                        var bottomStr = "";
+
+                        bottomStr += "    <!--左边ul 求婚相关-->\n" +
+                            "            <ul class=\"bkbook_left-secul\">\n" +
+                            "                    <li><a class=\"fl\" target=\"_blank\" href=\"/news/3954.html\"> " + (json[12].title.substring(0, 14) + "...") + "</a> <span\n" +
+                            "            class=\"fr\"> " + new Date(new Date(json[12].updateTime)).getFullYear() + "/" + (new Date(new Date(json[12].updateTime)).getMonth() + 1) + "/" + new Date(new Date(json[12].updateTime)).getDate() + "</span></li>\n" +
+                            "                <li><a class=\"fl\" target=\"_blank\" href=\"/news/3534.html\"> " + (json[13].title.substring(0, 14) + "...") + "</a> <span\n" +
+                            "            class=\"fr\"> " + new Date(new Date(json[13].updateTime)).getFullYear() + "/" + (new Date(new Date(json[13].updateTime)).getMonth() + 1) + "/" + new Date(new Date(json[13].updateTime)).getDate() + "</span></li>\n" +
+                            "                </ul>\n" +
+                            "                <!--左边ul end-->\n" +
+                            "                <!--右边ul 求婚相关-->\n" +
+                            "                <ul class=\"bkbook_left-secul bkbook_left-spcul\">\n" +
+                            "                    <li><a class=\"fl\" target=\"_blank\" href=\"/news/3042.html\"> " + (json[14].title.substring(0, 14) + "...") + "</a> <span class=\"fr\"> " + new Date(new Date(json[14].updateTime)).getFullYear() + "/" + (new Date(new Date(json[14].updateTime)).getMonth() + 1) + "/" + new Date(new Date(json[14].updateTime)).getDate() + "</span>\n" +
+                            "                </li>\n" +
+                            "                <li><a class=\"fl\" target=\"_blank\" href=\"/news/2699.html\"> " + (json[15].title.substring(0, 14) + "...") + "</a> <span class=\"fr\" > " + new Date(new Date(json[15].updateTime)).getFullYear() + "/" + (new Date(new Date(json[15].updateTime)).getMonth() + 1) + "/" + new Date(new Date(json[15].updateTime)).getDate() + "</span>\n" +
+                            "                </li>\n" +
+                            "                </ul>\n" +
+                            "                <!--右边ul end-->";
+
+                        $("#bottomNew").html(bottomStr);
 
                     }
+                });
 
-                    $("#rightNew").html(rightStr);
-
-                //下侧模块
-                var bottomStr = "";
-
-                    bottomStr +="    <!--左边ul 求婚相关-->\n" +
-                    "            <ul class=\"bkbook_left-secul\">\n" +
-                    "                    <li><a class=\"fl\" target=\"_blank\" href=\"/news/3954.html\"> "+(json[12].title.substring(0,14) + "...")+"</a> <span\n" +
-                    "            class=\"fr\"> "+ new Date( new Date(json[12].updateTime)).getFullYear() + "/"+ (new Date( new Date(json[12].updateTime)).getMonth() + 1)+ "/" + new Date( new Date(json[12].updateTime)).getDate() +"</span></li>\n" +
-                    "                <li><a class=\"fl\" target=\"_blank\" href=\"/news/3534.html\"> "+(json[13].title.substring(0,14) + "...")+"</a> <span\n" +
-                    "            class=\"fr\"> "+ new Date( new Date(json[13].updateTime)).getFullYear() + "/"+ (new Date( new Date(json[13].updateTime)).getMonth() + 1)+ "/" + new Date( new Date(json[13].updateTime)).getDate() +"</span></li>\n" +
-                    "                </ul>\n" +
-                    "                <!--左边ul end-->\n" +
-                    "                <!--右边ul 求婚相关-->\n" +
-                    "                <ul class=\"bkbook_left-secul bkbook_left-spcul\">\n" +
-                        "                    <li><a class=\"fl\" target=\"_blank\" href=\"/news/3042.html\"> "+(json[14].title.substring(0,14) + "...")+"</a> <span class=\"fr\"> "+ new Date( new Date(json[14].updateTime)).getFullYear() + "/"+ (new Date( new Date(json[14].updateTime)).getMonth() + 1)+ "/" + new Date( new Date(json[14].updateTime)).getDate() +"</span>\n" +
-                    "                </li>\n" +
-                    "                <li><a class=\"fl\" target=\"_blank\" href=\"/news/2699.html\"> "+(json[15].title.substring(0,14) + "...")+"</a> <span class=\"fr\" > "+ new Date( new Date(json[15].updateTime)).getFullYear() + "/"+ (new Date( new Date(json[15].updateTime)).getMonth() + 1)+ "/" + new Date( new Date(json[15].updateTime)).getDate() +"</span>\n" +
-                    "                </li>\n" +
-                    "                </ul>\n" +
-                    "                <!--右边ul end-->";
-
-                $("#bottomNew").html(bottomStr);
-
-                //左侧模块
-                }
-            });
-
-=======
+            })
+    </script>
 <!--    新闻块js    -->
     <script type="text/javascript">
         $(document).ready(function(){
@@ -1314,7 +1313,6 @@
                 alert("JSON Data: " + json.users[3].name);
             });
             $.getJSON("/new")
->>>>>>> origin/master
         });
     </script>
 
