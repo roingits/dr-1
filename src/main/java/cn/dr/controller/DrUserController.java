@@ -5,6 +5,11 @@ import cn.dr.entity.DrUser;
 import cn.dr.service.impl.DrUserServiceImpl;
 import cn.dr.util.MailUtil;
 import cn.dr.util.ResultInfo;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,67 +39,92 @@ public class DrUserController {
      * 邮箱验证
      */
     @GetMapping("/checkemail")
-    public ResultInfo checkEmail(String email){
+    public ResultInfo checkEmail(String email) {
 
         logger.info("进入邮箱验证功能");
-        if(drUserService.findByEmail(email)){
-            return new ResultInfo(null,0,"邮箱可以使用");
+        if (drUserService.findByEmail(email) == null) {
+            return new ResultInfo(null, 0, "邮箱可以使用");
         }
-        return new ResultInfo(null,0,"邮箱已被使用");
+        return new ResultInfo(null, 0, "邮箱已被使用");
     }
 
     /**
      * 发送注册邮箱验证码
+     *
      * @param email
      * @return
      */
     @GetMapping("/sendCode")
     public ResultInfo sendCode(String email, HttpSession session) {
         //生成随机验证码
-       String num=String.valueOf(Math.round(Math.random() * 999));
+        String num = String.valueOf(Math.round(Math.random() * 999));
 
         try {
-            MailUtil.send_mail(email,num);
+            MailUtil.send_mail(email, num);
             logger.info("发送成功");
             //因为在注册的时候还需要验证码匹配
-            session.setAttribute("code",num);
-            return new ResultInfo(null,1,"发送成功");
+            session.setAttribute("code", num);
+            return new ResultInfo(null, 1, "发送成功");
         } catch (MessagingException e) {
             e.printStackTrace();
         }
 
-        return new ResultInfo(null,0,"发送失败");
-    };
+        return new ResultInfo(null, 0, "发送失败");
+    }
+
+    ;
 
 
     /**
      * 进行注册
+     *
      * @param drUser
      * @param session
      * @return
      */
     @PostMapping("/register")
-    public ResultInfo register(DrUser drUser, HttpSession session){
+    public ResultInfo register(DrUser drUser, HttpSession session) {
 
-        logger.info("进入注册功能"+drUser);
-        logger.info(session.getAttribute("code")+"");
+        logger.info("进入注册功能" + drUser);
+        logger.info(session.getAttribute("code") + "");
 
 
         //验证码匹配
-        if(!drUser.getEmail_code().equals(session.getAttribute("code"))){
+        if (!drUser.getEmail_code().equals(session.getAttribute("code"))) {
 
-            return new ResultInfo(null,-2,"验证码错误");
+            return new ResultInfo(null, -2, "验证码错误");
         }
 
-       int num=drUserService.addDrUser(drUser);
-       //返回注册情况
-       if(num>0){
-           return new ResultInfo(null,1,"注册成功");
+        int num = drUserService.addDrUser(drUser);
+        //返回注册情况
+        if (num > 0) {
+            return new ResultInfo(null, 1, "注册成功");
 
-       }else if(num==0){
-           return new ResultInfo(null,-1,"邮箱已被使用");
-       }
-        return new ResultInfo(null,0,"注册失败");
+        } else if (num == 0) {
+            return new ResultInfo(null, -1, "邮箱已被使用");
+        }
+        return new ResultInfo(null, 0, "注册失败");
+    }
+
+    /**
+     * 进行登录
+     */
+    @PostMapping("/login")
+    public ResultInfo login(DrUser drUser) {
+        //获得现在的主体
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(drUser.getUsername(), drUser.getPassword());
+
+        try {
+            subject.login(token);
+        } catch (UnknownAccountException e) {
+
+            return new ResultInfo(null, 0, "账号错误");
+
+        } catch (IncorrectCredentialsException ice) {
+            return new ResultInfo(null, -1, "密码错误");
+        }
+        return new ResultInfo(null, 1, "登录成功");
     }
 
 }

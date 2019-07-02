@@ -8,9 +8,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver                                                        #时区
-    url: jdbc:mysql://localhost:3306/dr?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
+    url: jdbc:mysql://129.211.69.154:3306/dr?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
     username: root
-    password: root
+    password: 1300280553
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径

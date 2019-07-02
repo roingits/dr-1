@@ -47,14 +47,14 @@
             <div class="cort-right right">
                 <div class="r_bg"></div>
                 <!--登陆框内-->
-                <form method="post" action="login.html" id="loginform">
+                <form method="post" action="/dr-user/login" id="loginform">
                     <div class="cr_border">
                         <h3></h3>
                         <!--邮箱-->
                         <div id="cssName" class="the_input ">
                             <span class="member"></span>
                             <input type="text" placeholder="请输入邮箱/手机号码" id="txtName" class="al_Input dr_email" value=""
-                                   name="data[email]"/>
+                                   name="username"/>
                             <i id="tname"></i>
                         </div>
                         <!--邮箱end-->
@@ -62,7 +62,7 @@
                         <div style="margin-top:15px;" class="the_input" id="cssPwd">
                             <span class="password"></span>
                             <input type="password" placeholder="请输入密码" id="txtPwd" class="al_Input" value=""
-                                   name="data[password]"/>
+                                   name="password"/>
                             <i id="pwdd"></i>
                         </div>
                         <!--验证码-->
@@ -87,7 +87,7 @@
                         <div class="other_input">
                             <div class="bt1 clearfix" id="login">
                                 <span class="left">注册</span>
-                                <span class="right focus">登录</span>
+                                <span class="right focus" id="myspan">登录</span>
                             </div>
                         </div>
                         <!--按钮end-->
@@ -152,6 +152,19 @@
         if (event.keyCode == 13) {
             $('#login span').eq(1).click();
         }
+
+        $("#myspan").click(function () {
+
+            $.post("/dr-user/login",$("#loginform").serialize(),function(data){
+
+                if(data.code==1){
+                    location.href="/";
+                }else{
+                    location.href="/reg.html";
+                }
+
+            })
+        });
     });
 </script>
 </body>

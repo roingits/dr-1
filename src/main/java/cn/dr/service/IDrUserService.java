@@ -22,7 +22,12 @@ public interface IDrUserService extends IService<DrUser> {
     /**
      * 验证邮箱没有注册过
      */
-    public boolean findByEmail(String email);
+    public DrUser findByEmail(String email);
+
+    /**
+     * 查找用户
+     */
+    public DrUser findByUsername(String username);
 
 
 }

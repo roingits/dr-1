@@ -3,9 +3,11 @@ package cn.dr;
 import cn.dr.entity.DrCategory;
 import cn.dr.entity.DrProduct;
 import cn.dr.entity.DrTexture;
+import cn.dr.entity.DrUser;
 import cn.dr.service.IDrCategoryService;
 import cn.dr.service.IDrProductService;
 import cn.dr.service.IDrTextureService;
+import cn.dr.service.impl.DrUserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,6 +32,9 @@ public class DrApplicationTests {
     @Resource
     private IDrProductService drProductService;
 
+    @Resource
+    private DrUserServiceImpl drUserService;
+
     @Test
     public void contextLoads() {
         Random r = new Random();
@@ -51,10 +56,12 @@ public class DrApplicationTests {
 
     @Test
     public void test1(){
-        for (int i = 0; i < 100; i++) {
+        DrUser  drUser=drUserService.findByUsername("2420398728@qq.com");
 
-            System.out.println((char)ThreadLocalRandom.current().nextInt(65, 90));
-        }
+        System.out.println(drUser.getUsername());
+        System.out.println(drUser.getPassword());
+        System.out.println(drUser.getEmail());
+
     }
 
 }
