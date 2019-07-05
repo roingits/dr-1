@@ -29,6 +29,9 @@ public class DrApplicationController {
         return "detail";
     }
 
+    /**
+     * 主页面跳转到登录页面
+     */
     @RequestMapping("/login.html")
     public String login(){
         return "login";

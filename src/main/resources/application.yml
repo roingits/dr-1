@@ -8,11 +8,11 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver                                                        #时区
-#    url: jdbc:mysql://129.211.69.154:3306/dr?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
-    url: jdbc:mysql://localhost:3306/dr?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
+    url: jdbc:mysql://129.211.69.154:3306/dr?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
+#    url: jdbc:mysql://localhost:3306/dr?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
     username: root
-    password: root
-#    password: 1300280553
+#    password: root
+    password: 1300280553
   devtools:
     restart:
       enabled: true  #开启热启动部署
@@ -32,9 +32,3 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-<<<<<<< HEAD
-#  author: 张三
-
-
-=======
->>>>>>> origin/master
