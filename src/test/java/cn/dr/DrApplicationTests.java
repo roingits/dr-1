@@ -70,6 +70,12 @@ public class DrApplicationTests {
 
             System.out.println((char)ThreadLocalRandom.current().nextInt(65, 90));
         }
+        @Test
+        public void test(){
+
+            Jedis jedis=new Jedis("106.13.21.99",6379);
+            System.out.println(jedis.ping());
+        }
 
 
 
