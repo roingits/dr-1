@@ -18,6 +18,23 @@
     /*https://shop116998991.taobao.com/*/-->
     <link type="text/css" href="/layui/css/layui.css" rel="stylesheet">
     <script type="text/javascript" src="/layui/layui.js"></script>
+    <style type="text/css" rel="stylesheet">
+    /*  调整首页轮播图居中显示     */
+        .layui-carousel>[carousel-item] {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            left: 398px;
+        }
+        /*  调整首页用户查询框高度 */
+        .loverit_write .lit_txt {
+            width: 173px;
+            height: 26px;
+            border: 1px solid #cec9c5;
+            padding: 3px 0;
+        }
+    </style>
 </head>
 <body>
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -174,76 +191,34 @@
         }
     </script>
     <div>
-        <!--banner-->
-        <div class="indexbanner-all">
-            <ul class="indexbanner">
-                <li class="tb_first" style="display: block; opacity: 0.982279;">
-                    <div class="cmain cb_main">
-                        <a class="cb_jdt" target="_blank" href="index.htmlbrand.html"></a>
-                        <div class="banner-word sp_width">
-                            <img src="images/dr_logo.png"/>
-                            <div class="baner_longline">
-                                <em></em>
-                                <span>爱的最高承诺</span>
-                                <em></em>
-                            </div>
-                            <h2>男士一生仅能定制一枚</h2>
-                            <div class="baner_shortline">
-                                <em></em>
-                                <span>寓意：一生&middot;唯一&middot;真爱</span>
-                                <em></em>
-                            </div>
-                            <div class="button sp_button">
-                                <div class="bt2">
-                                    <a target="_blank" href="index.htmlbrand.html">了解品牌文化</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="tb_sec" style="display: list-item; opacity: 0.0177213;"><a target="_blank"
-                                                                                      href="index.html/xiaoshidai4.html">
-                    <div class="cmain cb_main">
-                    </div>
-                </a></li>
-                <li class="tb_third" style="display: none;">
-                    <div class="cmain cb_main">
-                        <a class="cb_jdt" target="_blank" href="index.htmlbrand.html_mr"></a>
-                        <div class="button sp_button DRstar_more">
-                            <div class="bt2">
-                                <a target="_blank" href="index.htmlbrand.html_mr">了解明星DR族</a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="tb_four" style="display: none;">
-                    <div class="cmain cb_main">
-                        <a class="cb_jdt" target="_blank" href="index.html/shopyd"></a>
-                        <div class="banner-word sp_width">
-                            <img src="images/spdr_logo.png"/>
-                            <h2 class="hax_margin">最浪漫的珠宝店</h2>
-                            <div class="baner_longline">
-                                <p>北京 / 上海 / 广州 / 深圳 / 重庆</p>
-                            </div>
-                            <div class="button sp_button">
-                                <div class="bt2">
-                                    <a target="_blank" href="index.html/shopyd">预约到店</a>
-                                </div>
-                            </div>
-                            <div class="baner_shortline">
-                                <p>更多实体店持续开设.....</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-            <ul class="indexbanner_bottom">
-                <li class=""></li>
-                <li class="click_inbanner"></li>
-                <li class=""></li>
-                <li class=""></li>
-            </ul>
+<!--        页首的轮播图      -->
+        <div class="layui-carousel" id="test2">
+            <div carousel-item>
+                <div><a href="javascript:void(0)"><img style="height: 410px" src="http://res.darryring.com/webimg/channel/jnr_ad1.jpg"></a></div>
+                <div><a href="javascript:void(0)"><img style="height: 410px" src="http://res.darryring.com/webimg/channel/jnr_ad2.jpg"></a></div>
+                <div><a href="javascript:void(0)"><img style="height: 410px" src="http://res.darryring.com/webimg/channel/jnr_ad3.jpg"></a></div>
+                <div><a href="javascript:void(0)"><img style="height: 410px" src="http://res.darryring.com/webimg/channel/jnr_ad4.jpg"></a></div>
+                <div><a href="javascript:void(0)"><img style="height: 410px" src="http://res.darryring.com/webimg/channel/jnr_ad5.jpg"></a></div>
+            </div>
         </div>
+        <!-- 条目中可以是任意内容，如：<img src=""> -->
+
+        <!--<script src="/static/build/layui.js"></script>-->
+        <script>
+            layui.use('carousel', function(){
+                var carousel = layui.carousel;
+                //建造实例
+                carousel.render({
+                    elem: '#test2'
+                    ,width: '100%' //设置容器宽度
+                    ,height: '410px'
+                    ,arrow: 'none' //始终显示箭头
+                    //,anim: 'updown' //切换动画方式
+                });
+            });
+
+        </script>
+
         <!--中间的内容-->
         <div class="all-thing">
             <!--提示-->

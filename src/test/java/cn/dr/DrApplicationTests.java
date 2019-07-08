@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -68,6 +69,12 @@ public class DrApplicationTests {
         System.out.println(drUser.getEmail());
 
             System.out.println((char)ThreadLocalRandom.current().nextInt(65, 90));
+        }
+        @Test
+        public void test(){
+
+            Jedis jedis=new Jedis("106.13.21.99",6379);
+            System.out.println(jedis.ping());
         }
 }
 
