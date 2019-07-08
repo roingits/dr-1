@@ -75,13 +75,11 @@
         <groupId>redis.clients</groupId>
         <artifactId>jedis</artifactId>
     </dependency>
-
-<<<<<<< HEAD
     <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
     </dependency>
-=======
+
         <!-- shiro -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -122,8 +120,6 @@
         </dependency>
         <!-- shiro END-->
 
-
->>>>>>> c34728037008a8325eba2e8950dbd22ef9cd26a8
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
         <!--        3.1.1版本无法下载，可能阿里没有导入该jar-->
         <dependency>

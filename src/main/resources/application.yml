@@ -1,18 +1,13 @@
 #端口号
 server:
   port: 8080
-#  servlet:
-#    context-path: /tx
-
 #数据库链接
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver                                                        #时区
     url: jdbc:mysql://129.211.69.154:3306/dr?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
-#    url: jdbc:mysql://localhost:3306/dr?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
     username: root
-<<<<<<< HEAD
-    password: root
+    password: 1300280553
   redis:
     host: 106.13.21.99
     port: 6379
@@ -23,25 +18,17 @@ spring:
          max-wait: 1ms
   thymeleaf:
     cache: false   #关闭缓存
-=======
-#    password: root
-    password: 1300280553
   devtools:
     restart:
       enabled: true  #开启热启动部署
   freemarker:
     cache: false      #页面不加载缓存，修改即时生效
->>>>>>> c34728037008a8325eba2e8950dbd22ef9cd26a8
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
   type-aliases-package: cn.dr.entity  # 注意：对应实体类的路径
   configuration:
     auto-mapping-behavior: full         #映射级别
-
-#mybatis-plus:
-
-#book:
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true

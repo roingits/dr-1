@@ -11,11 +11,7 @@ import cn.dr.service.IDrTextureService;
 import cn.dr.service.impl.DrUserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-<<<<<<< HEAD
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
-=======
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> c34728037008a8325eba2e8950dbd22ef9cd26a8
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import redis.clients.jedis.Jedis;
@@ -74,8 +70,8 @@ public class DrApplicationTests {
 
             System.out.println((char)ThreadLocalRandom.current().nextInt(65, 90));
         }
-<<<<<<< HEAD
-    }
+
+
 
 
     @Test
@@ -89,7 +85,6 @@ public class DrApplicationTests {
         System.out.println(jedis.get("k1"));
     }
 
-=======
->>>>>>> c34728037008a8325eba2e8950dbd22ef9cd26a8
+
 }
 
