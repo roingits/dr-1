@@ -11,6 +11,16 @@ spring:
     url: jdbc:mysql://localhost:3306/dr?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC
     username: root
     password: root
+  redis:
+    host: 106.13.21.99
+    port: 6379
+    password:
+       pool:
+         max-active: 8
+         max-idle: 5
+         max-wait: 1ms
+  thymeleaf:
+    cache: false   #关闭缓存
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径

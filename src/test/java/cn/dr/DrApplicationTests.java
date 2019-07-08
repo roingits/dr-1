@@ -8,8 +8,10 @@ import cn.dr.service.IDrProductService;
 import cn.dr.service.IDrTextureService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -55,6 +57,18 @@ public class DrApplicationTests {
 
             System.out.println((char)ThreadLocalRandom.current().nextInt(65, 90));
         }
+    }
+
+
+    @Test
+    public void test2(){
+
+
+        Jedis jedis=new Jedis("106.13.21.99",6379);
+        System.out.println("运行成功！");
+        System.out.println("查看服务是否在运行"+jedis.ping());
+        jedis.set("k1","k1");
+        System.out.println(jedis.get("k1"));
     }
 
 }

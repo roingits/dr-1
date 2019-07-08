@@ -65,7 +65,21 @@
             <artifactId>mail</artifactId>
             <version>1.4</version>
         </dependency>
+        <!--redis依赖用于shiro缓存-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 
+        <dependency>
+        <groupId>redis.clients</groupId>
+        <artifactId>jedis</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+    </dependency>
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
         <!--        3.1.1版本无法下载，可能阿里没有导入该jar-->
         <dependency>
