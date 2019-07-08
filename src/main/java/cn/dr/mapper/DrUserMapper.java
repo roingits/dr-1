@@ -31,4 +31,11 @@ public interface DrUserMapper extends BaseMapper<DrUser> {
      */
     @Select("SELECT email FROM `dr_user` WHERE email=#{email}")
     public DrUser findByEmail(@Param("email") String email);
+
+    /**
+     * 通过用户名查找
+     */
+    @Select("SELECT * FROM `dr_user` WHERE email=#{username}")
+    public DrUser findByUsername(@Param("username") String username);
+
 }
