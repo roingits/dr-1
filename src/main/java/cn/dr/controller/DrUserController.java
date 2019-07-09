@@ -110,13 +110,16 @@ public class DrUserController {
      * 进行登录
      */
     @PostMapping("/login")
-    public ResultInfo login(DrUser drUser) {
+    public ResultInfo login(DrUser drUser, boolean rememberMe, HttpSession session) {
         //获得现在的主体
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(drUser.getUsername(), drUser.getPassword());
-
+        UsernamePasswordToken token = new UsernamePasswordToken(drUser.getUsername(), drUser.getPassword(), rememberMe);
+        logger.info("记住我的属性" + rememberMe);
+        logger.info(subject.getPrincipal() + "       " + drUser);
+        logger.info(session.getAttribute("user") + "");
         try {
             subject.login(token);
+            session.setAttribute("user", drUser);
         } catch (UnknownAccountException e) {
 
             return new ResultInfo(null, 0, "账号错误");
@@ -125,6 +128,19 @@ public class DrUserController {
             return new ResultInfo(null, -1, "密码错误");
         }
         return new ResultInfo(null, 1, "登录成功");
+    }
+
+    /**
+     * 注销用户
+     *
+     * @return
+     */
+    @GetMapping("/loginout")
+    public ResultInfo loginout() {
+        logger.info("进入注销操作");
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();  //进行注销操作
+        return new ResultInfo(null, 1, "注销成功");
     }
 
 }

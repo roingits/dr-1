@@ -63,19 +63,8 @@
             <!--头部左边end-->
             <!--头部右边-->
             <div class="top-right fr">
-                <!--登录注册-->
-                <ul class="tright-ul fl">
-                    <div id="ucheader1_pllogin1">
-                        <li><a rel="nofollow" href="login.html">登录</a><em>|</em></li>
-                        <li><a rel="nofollow" href="reg.html">注册</a></li>
-                        <li class="headed"><em class="icon shooping"></em><a target="black" rel="nofollow"
-                                                                             href="cart.html">购物车</a><i>(0)</i></li>
-                    </div>
-                </ul>
-                <!--语言选择-->
-                <ul class="langruge-ul fr">
-                    <li><a target="_blank" href="index.html/en">English</a></li>
-                </ul>
+
+                <div th:replace="common/header"></div>
                 <!--搜索框-->
                 <div style="display:none;" class="search">
                     <input type="text" placeholder="求婚钻戒" class="txt1"/>
@@ -1131,6 +1120,7 @@
         </div>
     </div>
     <script type="text/javascript">
+
         function showbox(id) {
             getQeestion(id);
             for (var i = 1; i <= 8; i++) {
@@ -1294,12 +1284,12 @@
     </script>
 <!--    新闻块js    -->
     <script type="text/javascript">
-        $(document).ready(function(){
-            $.getJSON("test.js", { name: "John", time: "2pm" }, function(json){
-                alert("JSON Data: " + json.users[3].name);
-            });
-            $.getJSON("/new")
-        });
+                // $(document).ready(function(){
+                    $.getJSON("test.js", { name: "John", time: "2pm" }, function(json){
+                        alert("JSON Data: " + json.users[3].name);
+                    });
+                    $.getJSON("/new")
+        // });
     </script>
 
 
