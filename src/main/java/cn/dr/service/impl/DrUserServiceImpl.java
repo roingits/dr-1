@@ -25,6 +25,9 @@ import javax.annotation.Resource;
 @Service
 public class DrUserServiceImpl extends ServiceImpl<DrUserMapper, DrUser> implements IDrUserService {
 
+ static  int i=0;
+
+
     //日志
     private static final Logger logger = LoggerFactory.getLogger(DrUserController.class);
     @Resource
@@ -77,6 +80,9 @@ public class DrUserServiceImpl extends ServiceImpl<DrUserMapper, DrUser> impleme
 
     @Override
     public DrUser findByUsername(String username) {
+
+        i++;
+        System.out.println( "进入查询方法"+ i);
 
         return drUserMapper.findByUsername(username);
     }

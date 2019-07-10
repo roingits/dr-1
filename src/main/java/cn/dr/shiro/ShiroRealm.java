@@ -3,6 +3,7 @@ package cn.dr.shiro;
 import cn.dr.controller.DrUserController;
 import cn.dr.entity.DrUser;
 import cn.dr.mapper.DrUserMapper;
+import cn.dr.service.IDrUserService;
 import cn.dr.service.impl.DrUserServiceImpl;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -12,6 +13,7 @@ import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 
 import javax.annotation.Resource;
 
@@ -26,7 +28,7 @@ public class ShiroRealm extends AuthorizingRealm {
     private SimpleAuthenticationInfo info = null;
 
     @Resource
-    DrUserServiceImpl drUserService;
+    IDrUserService drUserService;
 
     public String getName() {
         return "mysqlRealm";
@@ -41,6 +43,7 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+
         //强制转换，封装信息
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         String username = token.getUsername(); //获得用户名
@@ -82,4 +85,6 @@ public class ShiroRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         return null;
     }
+
+
 }

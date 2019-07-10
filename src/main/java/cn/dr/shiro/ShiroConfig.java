@@ -1,6 +1,7 @@
 package cn.dr.shiro;
 
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
@@ -77,8 +78,7 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shirFilter(@Qualifier("securityManager") DefaultWebSecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        //配置记住我
-        securityManager.setRememberMeManager(rememberMeManager());
+
         return shiroFilterFactoryBean;
     }
 
@@ -93,6 +93,8 @@ public class ShiroConfig {
     public DefaultWebSecurityManager securityManager(@Qualifier("hashedCredentialsMatcher") HashedCredentialsMatcher matcher) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(myShiroRealm(matcher));
+        //配置记住我
+        securityManager.setRememberMeManager(rememberMeManager());
         return securityManager;
     }
 
@@ -110,4 +112,9 @@ public class ShiroConfig {
         hashedCredentialsMatcher.setHashIterations(1024);
         return hashedCredentialsMatcher;
     }
+
+
+
+
+
 }

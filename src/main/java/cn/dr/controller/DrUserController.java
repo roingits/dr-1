@@ -2,6 +2,7 @@ package cn.dr.controller;
 
 
 import cn.dr.entity.DrUser;
+import cn.dr.service.IDrUserService;
 import cn.dr.service.impl.DrUserServiceImpl;
 import cn.dr.util.MailUtil;
 import cn.dr.util.ResultInfo;
@@ -33,7 +34,7 @@ public class DrUserController {
     private static final Logger logger = LoggerFactory.getLogger(DrUserController.class);
 
     @Autowired
-    DrUserServiceImpl drUserService;
+    IDrUserService drUserService;
 
     /**
      * 邮箱验证
@@ -109,26 +110,28 @@ public class DrUserController {
     /**
      * 进行登录
      */
-    @PostMapping("/login")
+    @GetMapping("/login")
     public ResultInfo login(DrUser drUser, boolean rememberMe, HttpSession session) {
         //获得现在的主体
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(drUser.getUsername(), drUser.getPassword(), rememberMe);
-        logger.info("记住我的属性" + rememberMe);
-        logger.info(subject.getPrincipal() + "       " + drUser);
-        logger.info(session.getAttribute("user") + "");
-        try {
-            subject.login(token);
-            session.setAttribute("user", drUser);
-        } catch (UnknownAccountException e) {
+        if(!subject.isAuthenticated()){
+            UsernamePasswordToken token = new UsernamePasswordToken(drUser.getUsername(), drUser.getPassword(), rememberMe);
+            logger.info("记住我的属性" + rememberMe);
+            try {
+                subject.login(token);
+                session.setAttribute("user", drUser);
+            } catch (UnknownAccountException e) {
 
-            return new ResultInfo(null, 0, "账号错误");
+                return new ResultInfo(null, 0, "账号错误");
 
-        } catch (IncorrectCredentialsException ice) {
-            return new ResultInfo(null, -1, "密码错误");
+            } catch (IncorrectCredentialsException ice) {
+                return new ResultInfo(null, -1, "密码错误");
+            }
+
         }
         return new ResultInfo(null, 1, "登录成功");
-    }
+        }
+
 
     /**
      * 注销用户

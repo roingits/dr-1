@@ -46,6 +46,15 @@ public class DrApplicationController {
         return "reg";
     }
 
+    /**
+     * 跳转到个人信息页面
+     * @return
+     */
+    @RequestMapping("/member_index.html")
+    public String info(){
+        return "member_index";
+    }
+
     @RequestMapping("/test")
     public String test(){
         return "test";

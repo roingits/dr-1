@@ -47,7 +47,7 @@
             <div class="cort-right right">
                 <div class="r_bg"></div>
                 <!--登陆框内-->
-                <form method="post" action="/dr-user/login" id="loginform">
+                <form method="post" action="javascript:;" id="loginform">
                     <div class="cr_border">
                         <h3></h3>
                         <!--邮箱-->
@@ -155,7 +155,7 @@
 
         $("#myspan").click(function () {
 
-            $.post("/dr-user/login",$("#loginform").serialize(),function(data){
+            $.get("/dr-user/login",$("#loginform").serialize(),function(data){
 
                 if(data.code==1){
                     location.href="/";
