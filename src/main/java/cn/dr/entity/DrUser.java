@@ -84,6 +84,4 @@ public class DrUser implements Serializable {
      * 验证码
      */
     private String email_code;
-
-
 }

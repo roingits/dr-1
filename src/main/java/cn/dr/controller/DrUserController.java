@@ -5,6 +5,8 @@ import cn.dr.entity.DrUser;
 import cn.dr.service.impl.DrUserServiceImpl;
 import cn.dr.util.MailUtil;
 import cn.dr.util.ResultInfo;
+import com.baomidou.mybatisplus.core.conditions.AbstractWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -17,6 +19,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -143,4 +148,14 @@ public class DrUserController {
         return new ResultInfo(null, 1, "注销成功");
     }
 
+
+    @RequestMapping("/userOnlyCheck")
+    public String userOnlyCheck(@RequestParam("textName2")String textName2){
+        DrUser drUser = drUserService.findByUsername(textName2);
+        if(drUser != null){
+            return "true";
+        }else{
+            return "false";
+        }
+    }
 }
