@@ -69,4 +69,22 @@ public class DrApplicationController {
     public String test(){
         return "test";
     }
+
+    /**
+     * 跳转修改密码页面
+     * @return
+     */
+    @RequestMapping("/member_pwd.html")
+    public String member_pwd(){
+        return "member_pwd";
+    }
+
+    /**
+     * 跳转个人信息页面
+     * @return
+     */
+    @RequestMapping("/member_index.html")
+    public String member_index(){
+        return "member_index";
+    }
 }
