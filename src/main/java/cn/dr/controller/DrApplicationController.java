@@ -79,12 +79,5 @@ public class DrApplicationController {
         return "member_pwd";
     }
 
-    /**
-     * 跳转个人信息页面
-     * @return
-     */
-    @RequestMapping("/member_index.html")
-    public String member_index(){
-        return "member_index";
-    }
+
 }
