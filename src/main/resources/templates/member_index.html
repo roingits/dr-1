@@ -37,13 +37,14 @@
                 <div class="top-right fr">
                     <!--登录注册-->
                     <ul class="tright-ul fl">
-                        <div id="ctl00_ucheader_pllogin2">
-                            <li><a><span id="ctl00_ucheader_lit">KLNgOk</span></a></li>
-                            <li><a href="javascript:logout()" rel="nofollow">退出</a><em>|</em></li>
-                            <li><a target="black" rel="nofollow" href="member_index.html">我的DR</a><em>|</em></li>
-                            <li class="headed"><em class="icon shooping"></em><a target="black" rel="nofollow"
-                                                                                 href="cart.html">购物车</a><i>(0)</i></li>
-                        </div>
+                        <!--<div id="ctl00_ucheader_pllogin2">-->
+                            <!--<li><a><span id="ctl00_ucheader_lit">KLNgOk</span></a></li>-->
+                            <!--<li><a href="javascript:logout()" rel="nofollow">退出</a><em>|</em></li>-->
+                            <!--<li><a target="black" rel="nofollow" href="member_index.html">我的DR</a><em>|</em></li>-->
+                            <!--<li class="headed"><em class="icon shooping"></em><a target="black" rel="nofollow"-->
+                                                                                 <!--href="cart.html">购物车</a><i>(0)</i></li>-->
+                        <!--</div>-->
+                        <div th:replace="common/header"></div>
                     </ul>
                     <!--语言选择-->
                     <ul class="langruge-ul fr">
@@ -248,7 +249,7 @@
                                             <!--名字-->
                                             <div class="member_first-left-top">
                                                 <div class="mb_theleft fl">
-                                                    <span>您好！</span>
+                                                    <span>您好！</span><span th:text="${session.user.username}"></span>
                                                     <a href="member_info.html">（个人信息完善）</a>
                                                 </div>
                                                 <div class="mb_theright fl">
@@ -261,12 +262,12 @@
                                             <div class="member_first-left-sec">
                                                 <div class="mb_theright-sec fl">
                                                     <p><span>订单提醒：</span> <a href="member_order.html"><span
-                                                            class="vtop">待处理订单</span>（1）</a> <a
-                                                            href="/member/myevaluate.html"><span class="vtop">待评价</span>（0）</a>
+                                                            class="vtop">待处理订单</span><span th:text="${session.list.size()}">(1)</span></a> <a
+                                                            href="/member/myevaluate.html"><span class="vtop">待评价</span><span th:text="${session.list2.size()}">（1）</span></a>
                                                     </p>
                                                 </div>
                                                 <div class="mb_theright fl">
-                                                    <p><span>安全级别：</span> <em class="mb_red-color" id="rou">弱</em> <em
+                                                    <p><span>安全级别：</span> <em>弱</em> <em
                                                             id="zhong" class="mb_red-color">中</em> <em
                                                             id="strong">强</em></p>
                                                     <span style="display:none" id="span_pwd">hjl7233163</span>
@@ -301,10 +302,14 @@
                                         </div>
                                         <!--左边end-->
                                         <!--右边-->
-                                        <div class="member_cortr-first-right fr">
-                                            <img width="90" height="90" src="images/mem.jpg"/>
-                                            <p><a href="member_avatar.html">编辑个人资料</a></p>
-                                        </div>
+                                        <!--<div class="member_cortr-first-right fr">-->
+                                            <!--<img width="90" height="90" src="images/mem.jpg"/>-->
+                                            <!--<p><a href="member_avatar.html">编辑个人资料</a></p>-->
+                                        <!--</div>-->
+                                        <div th:if="${session.user.getUserHeadImg()==null}"><img height="120" width="160" src="images/mem.jpg" id="myimage"
+                                        /></div>
+                                        <div th:if="${session.user.getUserHeadImg()!=null}"><img height="120" width="160"  th:src="@{../images/upload/{i}(i=${session.user.getUserHeadImg()})}" id="myimages"
+                                        /></div>
                                         <!--右边end-->
                                     </div>
                                     <!--第一块end-->

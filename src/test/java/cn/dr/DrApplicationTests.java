@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -73,22 +74,17 @@ public class DrApplicationTests {
         @Test
         public void test(){
 
-            Jedis jedis=new Jedis("106.13.21.99",6379);
-            System.out.println(jedis.ping());
+            System.out.println(drUserService.getById("1"));
         }
 
 
 
 
     @Test
-    public void test2(){
+    public void test2(HttpSession session){
 
 
-        Jedis jedis=new Jedis("106.13.21.99",6379);
-        System.out.println("运行成功！");
-        System.out.println("查看服务是否在运行"+jedis.ping());
-        jedis.set("k1","k1");
-        System.out.println(jedis.get("k1"));
+
     }
 
 

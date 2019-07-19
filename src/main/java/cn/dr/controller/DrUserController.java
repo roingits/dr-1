@@ -1,7 +1,10 @@
 package cn.dr.controller;
 
 
+import cn.dr.entity.DrOrder;
+import cn.dr.entity.DrShipping;
 import cn.dr.entity.DrUser;
+import cn.dr.service.IDrOrderService;
 import cn.dr.service.IDrUserService;
 import cn.dr.service.impl.DrUserServiceImpl;
 import cn.dr.util.MailUtil;
@@ -18,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -35,6 +40,9 @@ public class DrUserController {
 
     @Autowired
     IDrUserService drUserService;
+
+    @Autowired
+    IDrOrderService iDrOrderService;
 
     /**
      * 邮箱验证
@@ -114,12 +122,17 @@ public class DrUserController {
     public ResultInfo login(DrUser drUser, boolean rememberMe, HttpSession session) {
         //获得现在的主体
         Subject subject = SecurityUtils.getSubject();
-        if(!subject.isAuthenticated()){
+        if (!subject.isAuthenticated()) {
             UsernamePasswordToken token = new UsernamePasswordToken(drUser.getUsername(), drUser.getPassword(), rememberMe);
             logger.info("记住我的属性" + rememberMe);
             try {
                 subject.login(token);
-                session.setAttribute("user", drUser);
+                DrUser drUser1=drUserService.findByUsername(drUser.getUsername());
+                List<DrOrder> list=iDrOrderService.findDrOrderByUserId(drUser1.getId(),0);  //处理中
+                List<DrOrder> list2=iDrOrderService.findDrOrderByUserId(drUser1.getId(),2); //评价
+                session.setAttribute("user", drUser1);
+                session.setAttribute("list", list);
+                session.setAttribute("list2", list2);
             } catch (UnknownAccountException e) {
 
                 return new ResultInfo(null, 0, "账号错误");
@@ -130,7 +143,7 @@ public class DrUserController {
 
         }
         return new ResultInfo(null, 1, "登录成功");
-        }
+    }
 
 
     /**
@@ -144,6 +157,26 @@ public class DrUserController {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();  //进行注销操作
         return new ResultInfo(null, 1, "注销成功");
+    }
+
+    @PostMapping("/perfectInfo")
+    public ResultInfo perfectInfo(@ModelAttribute("drUser") DrUser drUser, @ModelAttribute("drShipping") DrShipping drShipping, HttpSession session) {
+
+        //因为用户id存储在session中，并没有在隐藏域中，直接在session中取出
+        Integer id = ((DrUser) (session.getAttribute("user"))).getId();
+        logger.info("会话中存储的id" + id +",name:" +((DrUser) (session.getAttribute("user"))).getUsername());
+        logger.info(drUser.getUserHeadImg()+"图片路径");
+        drUser.setId(id);
+        drUser.setUserHeadImg(((DrUser)session.getAttribute("user")).getUserHeadImg());
+        drShipping.setUserId(id);
+        /**
+         * 将前台的表单数据存储在list中
+         */
+        List<Object> list = new ArrayList<Object>();
+        list.add(drUser);
+        list.add(drShipping);
+        int num = drUserService.perfect(list);
+        return new ResultInfo(null, num, null);
     }
 
 }

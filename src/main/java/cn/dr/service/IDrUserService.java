@@ -3,6 +3,8 @@ package cn.dr.service;
 import cn.dr.entity.DrUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -28,6 +30,11 @@ public interface IDrUserService extends IService<DrUser> {
      * 查找用户
      */
     public DrUser findByUsername(String username);
+
+    /**
+     * 修改个人信息
+     */
+    public int perfect(List<Object> list);
 
 
 }

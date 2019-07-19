@@ -3,6 +3,8 @@ package cn.dr.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * 专门负责跳页的Controller
  */
@@ -55,6 +57,14 @@ public class DrApplicationController {
         return "member_index";
     }
 
+    /**
+     * 个人信息到完善信息
+     * @return
+     */
+    @RequestMapping("/member_info.html")
+    public String perfect(HttpSession session){
+        return "member_info";
+    }
     @RequestMapping("/test")
     public String test(){
         return "test";
