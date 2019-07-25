@@ -41,4 +41,21 @@ public interface DrUserMapper extends BaseMapper<DrUser> {
     @Update("UPDATE `dr_user` SET`email`=#{email},`username`=#{username},sex=#{sex},`question`=#{question},`answer`=#{answer},`user_head_img`=#{userHeadImg} WHERE `id`= #{id}")
     public int perfect(DrUser drUser);
 
+    /**
+     * 检查原密码是否正确
+     * @param pwd
+     * @param id
+     * @return
+     */
+    @Select("SELECT COUNT(1) FROM  `dr_user` WHERE `password`=#{pwd} and id=#{id}")
+    public int checkPwd(@Param("pwd") String pwd,@Param("id")Integer id);
+
+    /**
+     * 修改密码
+     * @param pwd
+     * @param id
+     * @return
+     */
+    @Update("UPDATE `dr_user` SET `password`=#{pwd} WHERE id=#{id}")
+    public int updatePwd(@Param("pwd") String pwd,@Param("id")Integer id);
 }

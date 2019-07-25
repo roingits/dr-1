@@ -1,5 +1,6 @@
 package cn.dr;
 
+import cn.dr.controller.DrUserController;
 import cn.dr.service.IDrNewPictureService;
 import cn.dr.entity.DrCategory;
 import cn.dr.entity.DrProduct;
@@ -9,6 +10,8 @@ import cn.dr.service.IDrCategoryService;
 import cn.dr.service.IDrProductService;
 import cn.dr.service.IDrTextureService;
 import cn.dr.service.impl.DrUserServiceImpl;
+import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.util.ByteSource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,31 +64,36 @@ public class DrApplicationTests {
         }
     }
 
+
+    @Test
+    public  void jj(){
+
+        //加密方式
+        String hashAlgorithmName = "MD5";
+        //明文密码
+        Object credentials = "123456";
+        //盐值
+        Object salt = ByteSource.Util.bytes("2420398728@qq.com");
+        int hashIterations = 1024;
+        Object result = new SimpleHash(hashAlgorithmName, credentials, salt, hashIterations);
+        System.out.println(result);
+    }
     @Test
     public void test1(){
-        DrUser  drUser=drUserService.findByUsername("2420398728@qq.com");
-
-        System.out.println(drUser.getUsername());
-        System.out.println(drUser.getPassword());
-        System.out.println(drUser.getEmail());
-
-            System.out.println((char)ThreadLocalRandom.current().nextInt(65, 90));
-        }
+        DrUser  drUser=(DrUser) DrUserController.s.get(DrUserController.sessionId);
+        System.out.println(drUser.toString());
+    }
         @Test
         public void test(){
 
-            System.out.println(drUserService.getById("1"));
+            Jedis jedis=new Jedis("106.13.21.99");
+            jedis.set("hh","hhh");
+            System.out.println(jedis.get("hh"));
         }
 
 
 
 
-    @Test
-    public void test2(HttpSession session){
-
-
-
-    }
 
 
 }

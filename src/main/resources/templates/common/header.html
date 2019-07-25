@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<div th:value="${session.user}" id="mydiv2"></div>
 <!--登录注册-->
 <ul class="tright-ul fl">
     <div id="ucheader1_pllogin1">
@@ -33,6 +34,13 @@
 <script type="text/javascript">
 
     $(function(){
+
+        if($("#mydiv2").val()==null){
+
+            alert("登录已失效，返回首页");
+            location.href="login.html";
+
+        };
 
         /**
          * 登出账号

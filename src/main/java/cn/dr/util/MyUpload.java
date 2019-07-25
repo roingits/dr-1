@@ -16,12 +16,6 @@ import java.util.Random;
 @RestController
 public class MyUpload {
 
-    @RequestMapping("/jj")
-    public String jj(){
-
-        return "123";
-    }
-
     //logback日志对象
     private final static Logger logger = LoggerFactory.getLogger(MyUpload.class);
 

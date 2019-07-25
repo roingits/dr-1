@@ -114,4 +114,15 @@ public class DrUserServiceImpl extends ServiceImpl<DrUserMapper, DrUser> impleme
             return 0;
 
         }
+
+    @Override
+    public int checkPwd(String pwd, Integer id) {
+        return drUserMapper.checkPwd(pwd,id);
+    }
+
+    @Override
+    public int updatePwd(String pwd, Integer id) {
+
+        return drUserMapper.updatePwd(pwd,id);
+    }
 }

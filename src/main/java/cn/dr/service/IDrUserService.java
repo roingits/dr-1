@@ -2,6 +2,8 @@ package cn.dr.service;
 
 import cn.dr.entity.DrUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -36,5 +38,20 @@ public interface IDrUserService extends IService<DrUser> {
      */
     public int perfect(List<Object> list);
 
+    /**
+     * 检查密码
+     * @param pwd
+     * @param id
+     * @return
+     */
+    public int checkPwd(String pwd,Integer id);
+
+    /**
+     * 修改密码
+     * @param pwd
+     * @param id
+     * @return
+     */
+    public int updatePwd(String pwd,Integer id);
 
 }
