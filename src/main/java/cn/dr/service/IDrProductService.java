@@ -1,7 +1,10 @@
 package cn.dr.service;
 
 import cn.dr.entity.DrProduct;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,12 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IDrProductService extends IService<DrProduct> {
 
+    /**
+     * 根据条件查询商品信息
+     * @param qw
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    List<DrProduct> findPageProduct(QueryWrapper<DrProduct> qw, Integer pageNum, Integer pageSize);
 }

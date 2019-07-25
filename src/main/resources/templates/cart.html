@@ -40,12 +40,12 @@
             <!--导航条end-->
 
             <script type="text/javascript">
-                function deleteCart(cid) {
-                    if (confirm("确认删除？")) {
-                        $.get("/nAPI/Cart.aspx?action=delete&cid=" + cid, function () {
-                            window.location.reload();
-                        });
-                    }
+                function deleteCart() {
+                    // if (confirm("确认删除？")) {
+                    //     $.get("/dr-cart/delProduct?cid=" + cid, function () {
+                    //         window.location.reload();
+                    //     });
+                    // }
                 }
 
                 function clearCart() {
@@ -71,7 +71,8 @@
                 <div class="shop_cort-left fl">
                     <h3>查看我的购物车</h3>
                     <!--购物车-->
-                    <table cellspacing="0" cellpadding="0" border="0" class="shop_tabble">
+                    <table cellspacing="0" cellpadding="0" border="0" class="shop_tabble" id="products"
+                           th:fragment="products">
                         <tbody>
                         <tr class="nav_tr">
                             <td style="width:240px" class="sp_td">商品</td>
@@ -80,25 +81,37 @@
                             <td style="width:100px" class="kz_td">刻字</td>
                             <td class="gm_td">购买价</td>
                         </tr>
-                        <tr class="cp_tr">
+                        <!--  遍历生成   -->
+                        <tr th:each="product : ${products}" class="cp_tr">
+                            <input type="hidden" class="cid" th:value="${product.id}">
                             <td class="sp_td"><a href="/darry_ring/87.html" class="jx_shop"> <img width="85" height="85"
                                                                                                   src="images/201409011932585de1c2f2a9.jpg"/>
-                                <span> Forever系列 经典款</span></a></td>
-                            <td class="cz_td">18K白金</td>
+                                <span th:text=" ${product.name}"></span></a></td>
+                            <td class="cz_td" th:text="${product.textureName}"></td>
                             <td class="sc_td">7</td>
-                            <td class="kz_td">素材火♥</td>
-                            <td style="font-family:微软雅黑" class="gm_td">￥10,800</td>
-                            <td class="close_td"><span onClick="deleteCart(61538);" class="sicon s_close"></span></td>
+                            <td class="kz_td" th:text="${product.custom}"></td>
+                            <td style="font-family:微软雅黑" class="gm_td" th:text="${product.price}"></td>
+                            <td class="close_td"><span th:value="${product.id}" class="sicon s_close"></span></td>
                         </tr>
+                        <!--                        <tr class="cp_tr">-->
+                        <!--                            <td class="sp_td"><a href="/darry_ring/87.html" class="jx_shop"> <img width="85" height="85"-->
+                        <!--                                                                                                  src="images/201409011932585de1c2f2a9.jpg"/>-->
+                        <!--                                <span> Forever系列 经典款</span></a></td>-->
+                        <!--                            <td class="cz_td">18K白金</td>-->
+                        <!--                            <td class="sc_td">7</td>-->
+                        <!--                            <td class="kz_td">素材火♥</td>-->
+                        <!--                            <td style="font-family:微软雅黑" class="gm_td">￥10,800</td>-->
+                        <!--                            <td class="close_td"><span onClick="deleteCart(61538);" class="sicon s_close"></span></td>-->
+                        <!--                        </tr>-->
                         </tbody>
                     </table>
                     <!--购物车end-->
                     <!--结算-->
                     <div class="shop_js">
                         <a class="jx_shop" href="lists.html">继续购物</a>
-                        <a class="qk_shop" href="javascript:clearCart();">清空购物车</a>
-                        <span>你购买了<i>1</i>件商品</span>
-                        <span>总计：<i style="font-family:微软雅黑" class="fw_bold">￥10,800</i></span>
+                        <a class="qk_shop" href="javascript:;" id="clearCart">清空购物车</a>
+                        <span>你购买了<i id="totalCount">1</i>件商品</span>
+                        <span>总计：<i style="font-family:微软雅黑" id="totalPrice" class="fw_bold">￥10,800</i></span>
                         <span onClick="toPay();" class="end_bt"><em>立即结算</em></span>
                     </div>
                     <!--结算end-->
@@ -152,6 +165,63 @@
                 });
             }
         }
+    </script>
+
+    <script>
+        $(function () {
+            //获取购物车中的商品总价和所有商品数量
+            var getTotalPrice = function () {
+                var count = 0;
+                var total = 0.0;//商品总价
+                $.each($(".cp_tr>.gm_td"), function () {
+                    count += 1;
+                    total += parseFloat($(this).text());
+                });
+                $("#totalCount").text(count);
+                $("#totalPrice").text("￥" + total);
+            }
+
+            var getCartProduct = function () {
+                //发送ajax请求并刷新商品信息
+                $.post("/dr-cart/products", function (data) {
+                    $("#products").html(data);
+                    getTotalPrice();//计算商品总价
+                    bindEvent();//为新生成的元素重新绑定事件
+                });
+            }
+
+            //为页面中的元素绑定事件
+            var bindEvent = function () {
+                $("#clearCart").click(function () {
+                    if (confirm("确认要清空购物车吗?")) {
+                        $.get("/dr-cart/clearCart", function (data) {
+                            if (data > 0) {
+                                $(".cp_tr").remove();
+                                getTotalPrice();//重新计算商品总价
+                            }
+                        });
+                    }
+                });
+
+                //每栏商品上的删除图标
+                $(".sicon").click(function () {
+                    var cid = $(this).attr("value");
+                    if (confirm("确认删除？")) {
+                        var $this = $(this);
+                        $.get("/dr-cart/delProduct?cid=" + cid, function (data) {
+                            if (data > 0) {
+                                $this.parent().parent().remove();//移除对应的商品
+                                getTotalPrice();//重新计算商品总价
+                            }
+                        });
+                    }
+                });
+            }
+
+            $(window).load(function () {
+                getCartProduct();//获取购物车中的所有商品信息
+            });
+        });
     </script>
 </form>
 
