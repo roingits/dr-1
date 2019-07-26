@@ -3,6 +3,8 @@ package cn.dr.service;
 import cn.dr.entity.DrOrder;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IDrOrderService extends IService<DrOrder> {
 
+    List<DrOrder> findDrOrderByUserId(Integer id,Integer statusCode);
 }

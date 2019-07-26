@@ -85,5 +85,10 @@ public class DrUser implements Serializable {
      */
     private String email_code;
 
+    /**
+     * 性别
+     */
+    private String sex;
+
 
 }

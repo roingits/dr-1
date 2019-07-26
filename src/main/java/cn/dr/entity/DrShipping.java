@@ -75,6 +75,10 @@ public class DrShipping implements Serializable {
      * 邮编
      */
     private String receiverZip;
+    /**
+     * 默认收货地址，1是默认
+     */
+    private String receiverTolerate;
 
     /**
      * 创建时间

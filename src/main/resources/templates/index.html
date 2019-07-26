@@ -3,8 +3,13 @@
     <title>首页</title>
     <link href="css/index_A.css?v=1.3.7.1" type="text/css" rel="stylesheet"/>
     <link href="css/same_A.css?v=1.3.7.2" type="text/css" rel="stylesheet"/>
-    <link rel="stylesheet" th:href="@{/css/layui.css}" media="all">
-    <script type="text/javascript" th:src="@{/js/layui.js}"></script>
+
+
+<!--    <link rel="stylesheet" th:href="@{/css/layui.css}" media="all">-->
+<!--    <script type="text/javascript" th:src="@{/js/layui.js}"></script>-->
+<!--    <link type="text/css" href="/layui/css/layui.css" rel="stylesheet">-->
+<!--    <script type="text/javascript" src="/layui/layui.js"></script>-->
+
     <meta content="darry ring,戴瑞珠宝,darry ring钻戒价格,darry ring 实体店,求婚戒指" name="Keywords"/>
     <meta content="香港戴瑞珠宝DR（DarryRing）官方网站,每位男士凭身份证一生只可购买一枚，最独特的求婚钻戒，购钻授予真爱证书，可定制专属页面，证明与找寻一生唯一真爱的首选，其它产品包括求婚钻戒、结婚钻戒、求婚戒指、结婚戒指、对戒。"
           name="Description"/>
@@ -18,6 +23,9 @@
     /*https://shop116998991.taobao.com/*/-->
     <link type="text/css" href="/layui/css/layui.css" rel="stylesheet">
     <script type="text/javascript" src="/layui/layui.js"></script>
+<!--    <link type="text/css" href="/layui.layim-v3.0.1/layui/css/layui.css" rel="stylesheet">-->
+<!--    <script type="text/javascript" src="/layui.layim-v3.0.1/layui/layui.js"></script>-->
+
     <style type="text/css" rel="stylesheet">
     /*  调整首页轮播图居中显示     */
         .layui-carousel>[carousel-item] {
@@ -225,18 +233,18 @@
                 <div class="love_doit">
                     <div class="loverit_center">
                         <div class="loverit_write">
-                            <label>国家/区域:</label>
-                            <select id="txtArea_gai" style="vertical-align: middle;height:22px;">
-                                <option value="0">中国大陆</option>
-                                <option value="1">中国香港</option>
-                                <option value="2">中国澳门</option>
-                                <option value="3">中国台湾</option>
-                            </select>
-                            <label>先生姓名:</label>
-                            <input type="text" class="lit_txt" id="textName"/>
-                            <label>身份证号码:</label>
-                            <input type="text" class="lit_txt" id="textIDCard"/>
-                            <span id="btnsub2_gai"></span>
+                                <label>国家/区域:</label>
+                                <select id="txtArea_gai" style="height:26px;width: 55px;">
+                                    <option value="0">中国大陆</option>
+                                    <option value="1">中国香港</option>
+                                    <option value="2">中国澳门</option>
+                                    <option value="3">中国台湾</option>
+                                </select>
+                                <label>先生姓名:</label>
+                                <input type="text" class="lit_txt" id="textName"/>
+                                <label>身份证号码:</label>
+                                <input type="text" class="lit_txt" id="textIDCard"/>
+                                <span id="btnsub2_gai"></span>
                         </div>
                     </div>
                 </div>
@@ -896,14 +904,17 @@
         <div class="floatbig_hide fr"></div>
         <div class="floatbig_center">
             <!--客服-->
-            <div onClick="javascript:NTKF.im_openInPageChat();" id="Bearonline" class="floatbig_center-kf"></div>
+<!--            原模板         -->
+<!--            <div onClick="javascript:NTKF.im_openInPageChat();" id="Bearonline" class="floatbig_center-kf"></div>-->
+<!--            改动          -->
+            <div  id="Bearonline" class="floatbig_center-kf"></div>
             <!--客服end-->
             <!--定制咨询-->
             <div id="dzzxonline" class="floatbig_center-zx">
                 <a href="javascript:showModel(modelsever);"></a>
             </div>
             <!--定制咨询end-->
-            <img src="images/ew.jpg"/>
+            <img src="images/zhang_yang_xi_fen.png" style="height: 9%;position: relative;top: -8px;"/>
         </div>
     </div>
     <!--右边漂浮悬挂大的end-->
@@ -1279,6 +1290,29 @@
                     });
                     $.getJSON("/new")
         // });
+    </script>
+
+
+<!--    客服框     -->
+    <script>
+        $(document).ready(function () {
+            $("#Bearonline").click(function () {
+                layui.use('layim', function(layim){
+
+                    //先来个客服模式压压精
+                    layim.config({
+                        brief: true //是否简约模式（如果true则不显示主面板）
+                        ,initSkin: '5.jpg'  //背景图片
+                    }).chat({
+                        name: '张扬小哥哥'
+                        ,type: 'friend'
+                        ,avatar: 'http://tp1.sinaimg.cn/5619439268/180/40030060651/1'
+                        ,id: -2
+                    });
+                });
+            });
+        })
+
     </script>
 </form>
 </body>

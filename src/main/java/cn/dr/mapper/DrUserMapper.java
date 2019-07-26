@@ -2,10 +2,7 @@ package cn.dr.mapper;
 
 import cn.dr.entity.DrUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 /**
  * <p>
@@ -38,4 +35,27 @@ public interface DrUserMapper extends BaseMapper<DrUser> {
     @Select("SELECT * FROM `dr_user` WHERE email=#{username}")
     public DrUser findByUsername(@Param("username") String username);
 
+    /**
+     * 完善个人资料
+     */
+    @Update("UPDATE `dr_user` SET`email`=#{email},`username`=#{username},sex=#{sex},`question`=#{question},`answer`=#{answer},`user_head_img`=#{userHeadImg} WHERE `id`= #{id}")
+    public int perfect(DrUser drUser);
+
+    /**
+     * 检查原密码是否正确
+     * @param pwd
+     * @param id
+     * @return
+     */
+    @Select("SELECT COUNT(1) FROM  `dr_user` WHERE `password`=#{pwd} and id=#{id}")
+    public int checkPwd(@Param("pwd") String pwd,@Param("id")Integer id);
+
+    /**
+     * 修改密码
+     * @param pwd
+     * @param id
+     * @return
+     */
+    @Update("UPDATE `dr_user` SET `password`=#{pwd} WHERE id=#{id}")
+    public int updatePwd(@Param("pwd") String pwd,@Param("id")Integer id);
 }
