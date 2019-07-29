@@ -27,6 +27,11 @@ public class DrCommentController {
     @Autowired
     private IDrCommentService commentService;
 
+    @RequestMapping("/count")
+    public Object count(Integer pid){
+        return commentService.getCommentCountByPid(pid);
+    }
+
     @RequestMapping("/comments")
     public Object comments(Integer pid, Integer pageNo, ModelAndView mav){
         if(pageNo == null || pageNo == 0) pageNo = 1;//初始化页码信息

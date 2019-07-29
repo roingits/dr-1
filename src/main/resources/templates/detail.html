@@ -297,7 +297,7 @@
                                                                                                   href="index.html">Darry Ring</a> </span><span> <em>&gt;</em> </span><span> <a
                                 target="_blank" href="lists.html">DR钻戒</a> </span><span> <em>&gt;</em> </span><span> <a
                                 target="_blank"
-                                href="/jewelry_4">吊坠</a> </span><span> <em>&gt;</em> </span><span> <span th:text="${product.name}">锁住一生 LOCK套链</span> </span><a
+                                href="/jewelry_4" th:text="${textureName}"></a> </span><span> <em>&gt;</em> </span><span> <span th:text="${product.name}">锁住一生 LOCK套链</span> </span><a
                                 id="ctl00_content_website_SiteMapPath1_SkipLink"></a></span>
                     </div>
                     <!--购买页中间-->
@@ -508,7 +508,7 @@
                     <div class="gd_nav">
                         <ul class="gdnav_ul">
                             <li class="gdnav_sp"><span>商品详情</span></li>
-                            <li><span id="comment">最新评论<em id="commentDataCount">(6)</em></span></li>
+                            <li><span id="comment">最新评论<em id="commentDataCount">(0)</em></span></li>
                             <li><span>如何购买</span></li>
                             <li><span>常见问答</span></li>
                             <li><span>售后服务</span></li>
@@ -608,7 +608,7 @@
                                             <p></p>
                                         </div>
                                         <!--每一条评论左边end-->
-                                        <!--每一条评论左边-->
+                                        <!-每一条评论左边-->
                                         <div class="evertalk_left fr">
                                             <!--星星-->
                                             <p class="star"></p>
@@ -1649,10 +1649,20 @@
                         if(data == true){
                             alert("添加购物车成功!")
                         }else if(data == "noUser"){
-                            alert("您还没有登录,请先登录!")
+                            alert("您还没有登录,请先登录!");
+                            window.location.href = "login.html";
                         }
                     });
                 });
+
+                $(window).ready(function(){
+                    $.post("/dr-comment/count?pid=" + pid, function (data) {
+                        if(data != null){
+                            $("#commentDataCount").text("(" + data + ")");
+                        }
+                    });
+                });
+
             });
         </script>
 

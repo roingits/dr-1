@@ -1,8 +1,10 @@
 package cn.dr.controller;
 
 import cn.dr.entity.DrProduct;
+import cn.dr.entity.DrTexture;
 import cn.dr.service.IDrCommentService;
 import cn.dr.service.IDrProductService;
+import cn.dr.service.IDrTextureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,8 @@ public class DrApplicationController {
     private IDrProductService drProductService;
     @Autowired
     private IDrCommentService drCommentService;
+    @Autowired
+    private IDrTextureService textureService;
 
     @RequestMapping("/index.html")
     public String index() {
@@ -42,6 +46,8 @@ public class DrApplicationController {
         DrProduct product = drProductService.findProductById(pid);
         model.addAttribute("product",product);
         int commentCount = drCommentService.getCommentCountByPid(pid);
+        DrTexture textture = textureService.getTexttureById(product.getTextureId());
+        model.addAttribute("textureName",textture.getTextureName());
         model.addAttribute("commentCount",commentCount);
         return "detail";
     }
@@ -128,4 +134,28 @@ public class DrApplicationController {
         return "member_order";
     }
 
+    @RequestMapping("/cart_agreement.html")
+    public String cart_agreement(){
+        return "cart_agreement";
+    }
+
+    @RequestMapping("/cart_order.html")
+    public String cart_order(){
+        return "cart_order";
+    }
+    
+    @RequestMapping("/cart_order_success.html")
+    public String cart_order_success(){
+        return "cart_order_success";
+    }
+
+    @RequestMapping("/question.html")
+    public String question(){
+        return "question";
+    }
+    
+    @RequestMapping("/active.html")
+    public String active(){
+        return "active";
+    }
 }
