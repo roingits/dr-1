@@ -24,4 +24,11 @@ public interface IDrProductService extends IService<DrProduct> {
      * @return
      */
     List<DrProduct> findPageProduct(QueryWrapper<DrProduct> qw, Integer pageNum, Integer pageSize);
+
+    /**
+     * 根据id获取商品信息
+     * @param id
+     * @return
+     */
+    DrProduct findProductById(Integer id);
 }

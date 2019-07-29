@@ -9,8 +9,15 @@ public class UserInfo {
 
     //当前登录的用户id
     public static DrUser getCurrentUser() {
-        HttpSession session = (HttpSession) (DrUserController.s.get(DrUserController.sessionId));
-        DrUser user = (DrUser) session.getAttribute("user");
+        DrUser user = null;
+        try {
+            HttpSession session = (HttpSession) (DrUserController.s.get(DrUserController.sessionId));
+            user = (DrUser) session.getAttribute("user");
+        } catch (NullPointerException e) {
+            user = null;
+        }catch (Exception e1){
+            e1.printStackTrace();
+        }
         return user;
     }
 }

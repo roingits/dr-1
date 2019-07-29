@@ -26,6 +26,11 @@ public class DrCartServiceImpl extends ServiceImpl<DrCartMapper, DrCart> impleme
     private DrCartMapper drCartMapper;
 
     @Override
+    public int addToCart(DrCart cart) {
+        return drCartMapper.insert(cart);
+    }
+
+    @Override
     public List<DrCart> getCartsByUid(Integer uid) {
         QueryWrapper<DrCart> qw = new QueryWrapper<>();
         qw.eq("user_id",uid);

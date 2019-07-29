@@ -31,4 +31,9 @@ public class DrProductServiceImpl extends ServiceImpl<DrProductMapper, DrProduct
         System.out.println("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss  " + products.size());
         return products;
     }
+
+    @Override
+    public DrProduct findProductById(Integer id) {
+        return productMapper.selectById(id);
+    }
 }

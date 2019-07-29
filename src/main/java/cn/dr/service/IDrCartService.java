@@ -16,6 +16,14 @@ import java.util.Map;
  */
 public interface IDrCartService extends IService<DrCart> {
 
+
+    /**
+     * 添加购物车
+     * @param cart
+     * @return
+     */
+    int addToCart(DrCart cart);
+
     /**
      * 获取用户购物车中的所有信息
      * @param uid

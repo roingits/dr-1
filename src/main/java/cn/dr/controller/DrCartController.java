@@ -1,6 +1,7 @@
 package cn.dr.controller;
 
 
+import cn.dr.entity.DrCart;
 import cn.dr.entity.DrUser;
 import cn.dr.service.IDrCartService;
 import cn.dr.util.UserInfo;
@@ -30,6 +31,22 @@ public class DrCartController {
     @Autowired
     private IDrCartService drCartService;
 
+    @RequestMapping("/addToCart")
+    public Object addToCart(Integer pid){
+        DrUser user = UserInfo.getCurrentUser();
+        if(user == null){
+            return "noUser";
+        }
+        DrCart drCart = new DrCart();
+        drCart.setUserId(user.getId());
+        drCart.setProductId(pid);
+        return drCartService.addToCart(drCart);
+    }
+
+    /**
+     * 清空用户购物车
+     * @return
+     */
     @RequestMapping("/clearCart")
     public Object clearCart() {
 

@@ -330,7 +330,7 @@
                     <!--  遍历生成   -->
                     <li th:each="product : ${products}">
                         <div class="by_top">
-                            <a target="_blank" th:text="${product.name}" href="/darry_ring/${product.id}.html"></a>
+                            <a target="_blank" th:text="${product.name}" th:href="@{'/detail.html?pid='+${product.id}}" ></a>
                             <div class="bything-one">
                                 <img width="236px" height="236" alt="${product.name}"
                                      src="images/2014090119350717386d7a1e.jpg"/>

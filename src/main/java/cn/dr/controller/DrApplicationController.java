@@ -1,6 +1,12 @@
 package cn.dr.controller;
 
+import cn.dr.entity.DrProduct;
+import cn.dr.service.IDrCommentService;
+import cn.dr.service.IDrProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -10,6 +16,11 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class DrApplicationController {
+
+    @Autowired
+    private IDrProductService drProductService;
+    @Autowired
+    private IDrCommentService drCommentService;
 
     @RequestMapping("/index.html")
     public String index() {
@@ -27,7 +38,11 @@ public class DrApplicationController {
     }
 
     @RequestMapping("/detail.html")
-    public String detail() {
+    public String detail(Integer pid, Model model) {
+        DrProduct product = drProductService.findProductById(pid);
+        model.addAttribute("product",product);
+        int commentCount = drCommentService.getCommentCountByPid(pid);
+        model.addAttribute("commentCount",commentCount);
         return "detail";
     }
 
@@ -107,5 +122,10 @@ public class DrApplicationController {
      */
     @RequestMapping("/member_addr.html")
     public String member_addr(){return "member_addr";}
+    
+    @RequestMapping("/member_order.html")
+    public String member_order(){
+        return "member_order";
+    }
 
 }

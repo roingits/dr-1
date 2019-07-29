@@ -7,6 +7,7 @@ import cn.dr.service.IDrProductService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +32,13 @@ public class DrProductController {
     @Autowired
     private IDrProductService drProductService;
 
+    @RequestMapping("/darry_ring/{pid}")
+    public Object darry_ring(@PathVariable Integer pid,ModelAndView mav){
+        System.out.println("pid: " + pid);
+        mav.setViewName("detail.html");
+        return mav;
+    }
+    
     /**
      * 根据条件查询商品
      * @param drpListPrice
