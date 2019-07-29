@@ -27,4 +27,14 @@ public class DrShippingServiceImpl extends ServiceImpl<DrShippingMapper, DrShipp
     public List<DrShipping> findAllDrShippingByUserId(Integer userId) {
         return drShippingMapper.findAllDrShippingByUserId(userId);
     }
+
+    @Override
+    public int addAddressAll(DrShipping drShipping) {
+        return drShippingMapper.addAddressAll(drShipping);
+    }
+
+    @Override
+    public int updateAddress(DrShipping drShipping) {
+        return drShippingMapper.updateAddress(drShipping);
+    }
 }

@@ -17,4 +17,7 @@ public interface IDrShippingService extends IService<DrShipping> {
 
     List<DrShipping> findAllDrShippingByUserId(Integer userId);
 
+    int addAddressAll(DrShipping drShipping);
+
+    int updateAddress(DrShipping drShipping);
 }

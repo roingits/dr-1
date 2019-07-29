@@ -1,14 +1,6 @@
 package cn.dr.controller;
 
-import cn.dr.entity.DrProduct;
-import cn.dr.entity.DrTexture;
-import cn.dr.service.IDrCommentService;
-import cn.dr.service.IDrProductService;
-import cn.dr.service.IDrTextureService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -18,13 +10,6 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class DrApplicationController {
-
-    @Autowired
-    private IDrProductService drProductService;
-    @Autowired
-    private IDrCommentService drCommentService;
-    @Autowired
-    private IDrTextureService textureService;
 
     @RequestMapping("/index.html")
     public String index() {
@@ -42,13 +27,7 @@ public class DrApplicationController {
     }
 
     @RequestMapping("/detail.html")
-    public String detail(Integer pid, Model model) {
-        DrProduct product = drProductService.findProductById(pid);
-        model.addAttribute("product",product);
-        int commentCount = drCommentService.getCommentCountByPid(pid);
-        DrTexture textture = textureService.getTexttureById(product.getTextureId());
-        model.addAttribute("textureName",textture.getTextureName());
-        model.addAttribute("commentCount",commentCount);
+    public String detail() {
         return "detail";
     }
 
@@ -128,34 +107,5 @@ public class DrApplicationController {
      */
     @RequestMapping("/member_addr.html")
     public String member_addr(){return "member_addr";}
-    
-    @RequestMapping("/member_order.html")
-    public String member_order(){
-        return "member_order";
-    }
 
-    @RequestMapping("/cart_agreement.html")
-    public String cart_agreement(){
-        return "cart_agreement";
-    }
-
-    @RequestMapping("/cart_order.html")
-    public String cart_order(){
-        return "cart_order";
-    }
-    
-    @RequestMapping("/cart_order_success.html")
-    public String cart_order_success(){
-        return "cart_order_success";
-    }
-
-    @RequestMapping("/question.html")
-    public String question(){
-        return "question";
-    }
-    
-    @RequestMapping("/active.html")
-    public String active(){
-        return "active";
-    }
 }

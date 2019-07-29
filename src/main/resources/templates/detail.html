@@ -115,26 +115,26 @@
                id="__EVENTVALIDATION" name="__EVENTVALIDATION"/>
     </div>
     <div>
-<!--        <script type="text/javascript">-->
-<!--            function showSearch() {-->
-<!--                window.location = "/diydr/?pname=" + encodeURI($(".search input").val()) + "&bprice=&eprice=&bct=&ect=&orderby=&pagenum=1";-->
-<!--            }-->
+        <script type="text/javascript">
+            function showSearch() {
+                window.location = "/diydr/?pname=" + encodeURI($(".search input").val()) + "&bprice=&eprice=&bct=&ect=&orderby=&pagenum=1";
+            }
 
-<!--            //    $(function () {-->
-<!--            //        $.getJSON("/nAPI/loginuser.ashx", function (json) {-->
-<!--            //            if (json.islogin) {-->
-<!--            //                $(".tright-ul li").eq(3).show();-->
-<!--            //                $(".tright-ul li").eq(4).show();-->
-<!--            //                $(".tright-ul li").eq(3).find("a").eq(0).text(json.username);-->
-<!--            //                $(".headed i").text("(" + json.cartcount + ")");-->
-<!--            //            }-->
-<!--            //            else {-->
-<!--            //                $(".tright-ul li").eq(1).show();-->
-<!--            //                $(".tright-ul li").eq(2).show();-->
-<!--            //            }-->
-<!--            //        });-->
-<!--            //    });-->
-<!--        </script>-->
+            //    $(function () {
+            //        $.getJSON("/nAPI/loginuser.ashx", function (json) {
+            //            if (json.islogin) {
+            //                $(".tright-ul li").eq(3).show();
+            //                $(".tright-ul li").eq(4).show();
+            //                $(".tright-ul li").eq(3).find("a").eq(0).text(json.username);
+            //                $(".headed i").text("(" + json.cartcount + ")");
+            //            }
+            //            else {
+            //                $(".tright-ul li").eq(1).show();
+            //                $(".tright-ul li").eq(2).show();
+            //            }
+            //        });
+            //    });
+        </script>
         <!--头部-->
         <div class="cmain">
             <div class="headtop">
@@ -272,16 +272,16 @@
             </div>
         </div>
         <!--导航end-->
-<!--        <script type="text/javascript">-->
-<!--            function logout() {-->
-<!--                if (window.confirm('确定退出吗？')) {-->
+        <script type="text/javascript">
+            function logout() {
+                if (window.confirm('确定退出吗？')) {
 
-<!--                    $.get("/nAPI/QuitExit.ashx", function (data) {-->
-<!--                        window.location.href = "/";-->
-<!--                    });-->
-<!--                }-->
-<!--            }-->
-<!--        </script>-->
+                    $.get("/nAPI/QuitExit.ashx", function (data) {
+                        window.location.href = "/";
+                    });
+                }
+            }
+        </script>
         <div class="cort">
             <!--遮罩-->
             <div class="backall">
@@ -289,57 +289,57 @@
             <!--遮罩end-->
             <!--钻戒页面中间-->
             <div class="cort">
-                <div class="tobuy cmain" id="tobuy" th:fragment="product">
+                <div class="tobuy cmain">
                     <div class="zbk_top spalid">
                         <span>您当前的位置：</span>
                         <span id="ctl00_content_website_SiteMapPath1"><a
                                 href="#ctl00_content_website_SiteMapPath1_SkipLink"></a><span> <a target="_blank"
                                                                                                   href="index.html">Darry Ring</a> </span><span> <em>&gt;</em> </span><span> <a
-                                target="_blank" href="lists.html">DR钻戒</a> </span><span> <em>&gt;</em> </span><span> <a
+                                target="_blank" href="lists.html">珠宝饰品</a> </span><span> <em>&gt;</em> </span><span> <a
                                 target="_blank"
-                                href="/jewelry_4" th:text="${textureName}"></a> </span><span> <em>&gt;</em> </span><span> <span th:text="${product.name}">锁住一生 LOCK套链</span> </span><a
+                                href="/jewelry_4">吊坠</a> </span><span> <em>&gt;</em> </span><span> <span>锁住一生 LOCK套链</span> </span><a
                                 id="ctl00_content_website_SiteMapPath1_SkipLink"></a></span>
                     </div>
                     <!--购买页中间-->
                     <div class="buy_cort">
-<!--                        <script type="text/javascript">-->
-<!--                            /*收藏事件*/-->
-<!--                            var favoritesEvent = function () {-->
-<!--                            };-->
-<!--                            $(function () {-->
-<!--                                try {-->
-<!--                                    favoritesEvent = function () {-->
-<!--                                        var _self = this;-->
-<!--                                        $(_self).unbind("click");-->
-<!--                                        var url = window.location.href;-->
-<!--                                        var arr = url.split("/");-->
-<!--                                        url = arr[arr.length - 1].toString();-->
-<!--                                        url = url.substring(0, url.indexOf(".html"));-->
-<!--                                        var price = $(".byright_top span").text();-->
-<!--                                        price = price.substr(1);-->
-<!--                                        $.get("/nAPI/favorites.ashx?action=add&pid=404&myParm=" + url + "&price=" + price, function (msg) {-->
-<!--                                            $(_self).click(favoritesEvent);-->
+                        <script type="text/javascript">
+                            /*收藏事件*/
+                            var favoritesEvent = function () {
+                            };
+                            $(function () {
+                                try {
+                                    favoritesEvent = function () {
+                                        var _self = this;
+                                        $(_self).unbind("click");
+                                        var url = window.location.href;
+                                        var arr = url.split("/");
+                                        url = arr[arr.length - 1].toString();
+                                        url = url.substring(0, url.indexOf(".html"));
+                                        var price = $(".byright_top span").text();
+                                        price = price.substr(1);
+                                        $.get("/nAPI/favorites.ashx?action=add&pid=404&myParm=" + url + "&price=" + price, function (msg) {
+                                            $(_self).click(favoritesEvent);
 
-<!--                                            if (msg != "") {-->
-<!--                                                alert(msg);-->
-<!--                                            } else {-->
-<!--                                                favoritesCss(true);-->
-<!--                                                alert("收藏成功。")-->
-<!--                                            }-->
-<!--                                        }, "html");-->
-<!--                                    };-->
-<!--                                } catch (e) {-->
-<!--                                }-->
-<!--                                $(".share_sc").click(function () {-->
-<!--                                    if ('false' == 'false') {-->
-<!--                                        alert("请登录！");-->
-<!--                                        window.location.href = 'login.html?forward=index.html/jewelry/404.html';-->
-<!--                                    }-->
-<!--                                });-->
+                                            if (msg != "") {
+                                                alert(msg);
+                                            } else {
+                                                favoritesCss(true);
+                                                alert("收藏成功。")
+                                            }
+                                        }, "html");
+                                    };
+                                } catch (e) {
+                                }
+                                $(".share_sc").click(function () {
+                                    if ('false' == 'false') {
+                                        alert("请登录！");
+                                        window.location.href = 'login.html?forward=index.html/jewelry/404.html';
+                                    }
+                                });
 
-<!--                            });-->
+                            });
 
-<!--                        </script>-->
+                        </script>
                         <!--购买页中间的左边图片-->
                         <div class="buycort_left fl">
                             <ul class="bc_left">
@@ -395,8 +395,8 @@
                                             class="jiathis_button_expanded jiathis_counter jiathis_bubble_style"
                                             id="jiathis_counter_46" title="累计分享18次">18</span></a>
                                 </div>
-<!--                                <script charset="utf-8" src="js/jia.js" type="text/javascript"></script>-->
-<!--                                <script charset="utf-8" src="js/plugin.client.js" type="text/javascript"></script>-->
+                                <script charset="utf-8" src="js/jia.js" type="text/javascript"></script>
+                                <script charset="utf-8" src="js/plugin.client.js" type="text/javascript"></script>
                                 <!-- JiaThis Button END -->
                             </div>
                             <!--收藏分享end-->
@@ -406,12 +406,11 @@
                         <div class="buycort_right fr">
                             <!--钻戒-->
                             <div class="byright_top">
-                                <input type="hidden" id="pid" th:value="${product.id}"/>
-                                <p th:text="${product.name}">锁住一生 LOCK套链[N04001205]</p>
-                                <p><span th:text="@{'&yen;'+${product.price}}">&yen;5,920</span></p>
+                                <p>锁住一生 LOCK套链[N04001205]</p>
+                                <p><span>&yen;5,920</span></p>
                                 <div class="byright_top-xq">
                                     <i>最近售出：135</i>
-                                    <i>用户评论：<i th:text="${commentCount}"></i></i>
+                                    <i>用户评论：6</i>
                                     <i>收藏人气：25</i>
                                 </div>
                             </div>
@@ -425,31 +424,31 @@
                             <!--选择材质刻字等-->
                             <div class="byright_thr">
                                 <!--第一行-->
-<!--                                <script type="text/javascript">-->
-<!--                                    var MaterialChoosedEvent = function (m, p) {-->
-<!--                                    };-->
-<!--                                    $(function () {-->
-<!--                                        $("#materialDiv i").click(function () {-->
-<!--                                            //alert("222");-->
-<!--                                            MaterialChoosedEvent($(this).text(), parseFloat($(this).attr("value")));-->
-<!--                                        });-->
-<!--                                        var w = $(".border_cs-td4 em").eq(0).text();-->
-<!--                                        $("#materialDiv i").eq(0).click();-->
-<!--                                        $("#materialDiv i").eq(0).click(function () {-->
-<!--                                            $(".border_cs-td4 em").eq(0).text(w);-->
-<!--                                        });-->
+                                <script type="text/javascript">
+                                    var MaterialChoosedEvent = function (m, p) {
+                                    };
+                                    $(function () {
+                                        $("#materialDiv i").click(function () {
+                                            //alert("222");
+                                            MaterialChoosedEvent($(this).text(), parseFloat($(this).attr("value")));
+                                        });
+                                        var w = $(".border_cs-td4 em").eq(0).text();
+                                        $("#materialDiv i").eq(0).click();
+                                        $("#materialDiv i").eq(0).click(function () {
+                                            $(".border_cs-td4 em").eq(0).text(w);
+                                        });
 
-<!--//        var m = $("#materialDiv i").eq(1).text();-->
-<!--//        $("#materialDiv i").eq(1).click(function () {-->
-<!--//            if (m=="PT950") {-->
-<!--//                var ww = w * 1.375;-->
-<!--//                $(".border_cs-td4 em").eq(0).text(ww);-->
-<!--//            }-->
-<!--//            -->
-<!--//        });-->
+//        var m = $("#materialDiv i").eq(1).text();
+//        $("#materialDiv i").eq(1).click(function () {
+//            if (m=="PT950") {
+//                var ww = w * 1.375;
+//                $(".border_cs-td4 em").eq(0).text(ww);
+//            }
+//            
+//        });
 
-<!--                                    });-->
-<!--                                </script>-->
+                                    });
+                                </script>
                                 <div id="materialDiv" class="thr_first">
                                     <span>材质：</span>
                                     <i value="5920.00" class="iborder">18K白金</i>
@@ -467,7 +466,7 @@
                             <!--购买选项-->
                             <div id="addCa" class="button buy_button">
                                 <div title="购买darry ring钻戒" class="bt1">
-                                    <span id="addToCart">加入购物车</span>
+                                    <span>加入购物车</span>
                                 </div>
                                 <div title="把darry ring加入购物车" class="bt2">
                                     <span>立即购买</span>
@@ -478,37 +477,37 @@
                     </div>
                     <!--购买页中间end-->
                 </div>
-<!--                <script type="text/javascript" language="javascript">-->
-<!--                    $(function () {-->
-<!--                        CommentLoadEvent = function (datacount) {-->
-<!--                            $(".gdnav_ul #commentDataCount").text("(" + datacount + ")");-->
-<!--                        };-->
+                <script type="text/javascript" language="javascript">
+                    $(function () {
+                        CommentLoadEvent = function (datacount) {
+                            $(".gdnav_ul #commentDataCount").text("(" + datacount + ")");
+                        };
 
-<!--                    });-->
-<!--                </script>-->
-<!--                <script>-->
-<!--                    function addy(id) {-->
+                    });
+                </script>
+                <script>
+                    function addy(id) {
 
-<!--                        $.post("/API/ProductAPI.ashx", {action: 'addy', id: id}, function (data) {-->
-<!--                            $("#addy" + id).text('(' + data + ')是');-->
+                        $.post("/API/ProductAPI.ashx", {action: 'addy', id: id}, function (data) {
+                            $("#addy" + id).text('(' + data + ')是');
 
-<!--                        });-->
-<!--                    }-->
+                        });
+                    }
 
-<!--                    function addn(id) {-->
+                    function addn(id) {
 
-<!--                        $.post("/API/ProductAPI.ashx", {action: 'addn', id: id}, function (data) {-->
-<!--                            $("#addn" + id).text('(' + data + ')否');-->
-<!--                        });-->
-<!--                    }-->
-<!--                </script>-->
+                        $.post("/API/ProductAPI.ashx", {action: 'addn', id: id}, function (data) {
+                            $("#addn" + id).text('(' + data + ')否');
+                        });
+                    }
+                </script>
                 <!--小导航-->
                 <div class="allthenav">
                     <!--导航-->
                     <div class="gd_nav">
                         <ul class="gdnav_ul">
                             <li class="gdnav_sp"><span>商品详情</span></li>
-                            <li><span id="comment">最新评论<em id="commentDataCount">(0)</em></span></li>
+                            <li><span>最新评论<em id="commentDataCount">(6)</em></span></li>
                             <li><span>如何购买</span></li>
                             <li><span>常见问答</span></li>
                             <li><span>售后服务</span></li>
@@ -523,7 +522,7 @@
                 <!--导航下的所有-->
                 <div class="sy_xx">
                     <!--商品详情-->
-                    <!--                    <div style="display:block" id="wrap" class="thing_wrap xqbuy_it cmain">-->
+<!--                    <div style="display:block" id="wrap" class="thing_wrap xqbuy_it cmain">-->
                     <div style="display:block" id="wrap10" class="thing_wrap xqbuy_it cmain">
                         <!--参数详情加图片-->
                         <div class="xq_it cmain">
@@ -587,8 +586,41 @@
                     <!--商品详情end-->
                     <!--最新评论-->
                     <!--评论页-->
-                    <!--                    <div id="wrap" class="xq_it xqbuy_it cmain">-->
-                    <div id="wrap13"  th:fragment="wrap13" class="xq_it xqbuy_it cmain">
+<!--                    <div id="wrap" class="xq_it xqbuy_it cmain">-->
+                    <div id="wrap13" class="xq_it xqbuy_it cmain">
+                        <script>
+                            var CommentLoadEvent = function () {
+                            };
+                            var CommentCurrentNum = 1;
+
+                            function CommentLoadData(currentPageNum) {
+                                $.get("/nAPI/Comment.aspx?pagenum=" + currentPageNum + "&pid=404", function (data) {
+                                    $("#commentContent").empty();
+                                    $("#commentContent").html(data);
+                                    $("#countpl").text(CommentDataCount);
+                                    $("#commentpnum").text(currentPageNum + "/" + CommentPageCount);
+                                    CommentCurrentNum = currentPageNum;
+                                    __CurrentPagingComment.ReCreate(CommentPageCount, currentPageNum);
+                                    CommentLoadEvent(CommentDataCount);
+                                });
+                            }
+
+                            $(function () {
+                                __CurrentPagingComment.CustomChanged = function (num) {
+                                    CommentLoadData(num);
+                                };
+                                setTimeout(function () {
+                                    CommentLoadData(CommentCurrentNum);
+                                }, 300);
+                            });
+
+
+                            function CommentToNext() {
+                                if (CommentPageCount >= (CommentCurrentNum + 1)) {
+                                    __CurrentPagingComment.Next();
+                                }
+                            }
+                        </script>
                         <!--评论页-->
                         <div class="ask cmain">
                             <!--别人的评论-->
@@ -599,28 +631,128 @@
                                         最新评论
                                     </div>
                                 </div>
-                                <div id="commentContent"  th:each="com : ${comments}">
+                                <div id="commentContent">
                                     <!--每一条评论-->
                                     <div class="every_talk">
                                         <!--每一条评论左边-->
                                         <div class="evertalk_right fl">
-                                            <p th:text="${com.content}">好棒，服务好好</p>
+                                            <p>好棒，服务好好</p>
                                             <p></p>
                                         </div>
                                         <!--每一条评论左边end-->
-                                        <!-每一条评论左边-->
+                                        <!--每一条评论左边-->
                                         <div class="evertalk_left fr">
                                             <!--星星-->
                                             <p class="star"></p>
                                             <div class="name_date">
                                                 <p>3**</p>
-                                                <p th:text="${com.createTime}">2015/7/7 12:16:02</p>
+                                                <p>2015/7/7 12:16:02</p>
                                             </div>
                                         </div>
                                         <!--每一条评论左边end-->
                                     </div>
                                     <!--每一条评论end-->
                                     <!--每一条评论-->
+                                    <div class="every_talk">
+                                        <!--每一条评论左边-->
+                                        <div class="evertalk_right fl">
+                                            <p>很好很有意义</p>
+                                            <p></p>
+                                        </div>
+                                        <!--每一条评论左边end-->
+                                        <!--每一条评论左边-->
+                                        <div class="evertalk_left fr">
+                                            <!--星星-->
+                                            <p class="star"></p>
+                                            <div class="name_date">
+                                                <p>A**</p>
+                                                <p>2015/6/9 13:18:31</p>
+                                            </div>
+                                        </div>
+                                        <!--每一条评论左边end-->
+                                    </div>
+                                    <!--每一条评论end-->
+                                    <!--每一条评论-->
+                                    <div class="every_talk">
+                                        <!--每一条评论左边-->
+                                        <div class="evertalk_right fl">
+                                            <p>1</p>
+                                            <p></p>
+                                        </div>
+                                        <!--每一条评论左边end-->
+                                        <!--每一条评论左边-->
+                                        <div class="evertalk_left fr">
+                                            <!--星星-->
+                                            <p class="star"></p>
+                                            <div class="name_date">
+                                                <p>匿名**</p>
+                                                <p>2015/5/15 16:42:36</p>
+                                            </div>
+                                        </div>
+                                        <!--每一条评论左边end-->
+                                    </div>
+                                    <!--每一条评论end-->
+                                    <!--每一条评论-->
+                                    <div class="every_talk">
+                                        <!--每一条评论左边-->
+                                        <div class="evertalk_right fl">
+                                            <p>老婆大人很满意！</p>
+                                            <p></p>
+                                        </div>
+                                        <!--每一条评论左边end-->
+                                        <!--每一条评论左边-->
+                                        <div class="evertalk_left fr">
+                                            <!--星星-->
+                                            <p class="star"></p>
+                                            <div class="name_date">
+                                                <p>晨**</p>
+                                                <p>2015/4/25 10:54:30</p>
+                                            </div>
+                                        </div>
+                                        <!--每一条评论左边end-->
+                                    </div>
+                                    <!--每一条评论end-->
+                                    <!--每一条评论-->
+                                    <div class="every_talk">
+                                        <!--每一条评论左边-->
+                                        <div class="evertalk_right fl">
+                                            <p>
+                                                刚去了武汉店回来有点失望，戒指大了半寸打算编个绳子的，结果营业员说不允许编只能改大小，态度真是不想说了，我还是拿着你们的钻戒去其它品牌店编的，还准备买个男戒，结果品种太少只有几款，至于说选购的感受，感觉跟期望中的实体店相差太大。</p>
+                                            <p></p>
+                                        </div>
+                                        <!--每一条评论左边end-->
+                                        <!--每一条评论左边-->
+                                        <div class="evertalk_left fr">
+                                            <!--星星-->
+                                            <p class="star"></p>
+                                            <div class="name_date">
+                                                <p>勺**</p>
+                                                <p>2015/4/19 21:15:33</p>
+                                            </div>
+                                        </div>
+                                        <!--每一条评论左边end-->
+                                    </div>
+                                    <!--每一条评论end-->
+                                    <!--每一条评论-->
+                                    <div class="every_talk">
+                                        <!--每一条评论左边-->
+                                        <div class="evertalk_right fl">
+                                            <p>赞</p>
+                                            <p></p>
+                                        </div>
+                                        <!--每一条评论左边end-->
+                                        <!--每一条评论左边-->
+                                        <div class="evertalk_left fr">
+                                            <!--星星-->
+                                            <p class="star"></p>
+                                            <div class="name_date">
+                                                <p>匿名**</p>
+                                                <p>2015/2/11 22:51:35</p>
+                                            </div>
+                                        </div>
+                                        <!--每一条评论左边end-->
+                                    </div>
+                                    <!--每一条评论end-->
                                 </div>
                                 <!--new评论标题end-->
                                 <!--评论数目-->
@@ -629,7 +761,7 @@
                                         <a target="_blank" href="/member/myevaluate.html">我要评论</a>
                                     </div>
                                     <div class="talktop_left fr">
-                                        <span>共<i id="countpl" th:text="${commentCount}">6</i>条评论</span>
+                                        <span>共<i id="countpl">6</i>条评论</span>
                                         <em>|</em>
                                         <span id="commentpnum">1/1</span>
                                         <span onClick="CommentToNext();" class="next_page">下一页</span>
@@ -669,8 +801,38 @@
                     </div>
                     <!--如何购买end-->
                     <!--常见问答-->
-                    <!--                    <div id="wrap" class="xq_it xqbuy_it cmain">-->
+<!--                    <div id="wrap" class="xq_it xqbuy_it cmain">-->
                     <div id="wrap11" class="xq_it xqbuy_it cmain">
+                        <script>
+                            var ComLoadEvent = function () {
+                            };
+                            var ComCurrentNum = 1;
+
+                            function ComLoadData(currentPageNum) {
+                                $.get("/nAPI/ComQuestion.aspx?pagenum=" + currentPageNum, function (data) {
+                                    $("#questionContent").empty();
+                                    $("#questionContent").html(data);
+                                    $(".count").text(ComDataCount);
+                                    $("#compnum").text(currentPageNum + "/" + ComPageCount);
+                                    ComCurrentNum = currentPageNum;
+                                    __Question.ReCreate(ComPageCount, currentPageNum);
+                                    ComLoadEvent(ComPageCount);
+                                });
+                            }
+
+                            $(document.body).ready(function () {
+                                __Question.CustomChanged = function (num) {
+                                    ComLoadData(num);
+                                };
+                                ComLoadData(ComCurrentNum);
+                            });
+
+                            function ComToNext() {
+                                if (ComPageCount >= (ComCurrentNum + 1)) {
+                                    __Question.Next();
+                                }
+                            }
+                        </script>
                         <div class="xq_it cmain">
                             <div class="talk_it">
                                 <!--new提问标题-->
@@ -680,39 +842,6 @@
                                     </div>
                                 </div>
                                 <div id="questionContent">
-                                    <div class="every_talk">
-                                        <!--每一条评论左边-->
-                                        <div class="question_left fl">
-                                            <p><i></i> <span> <span
-                                                    style="margin-top:8px;">Q：哪些电商平台可以购买到DR正品？</span> </span></p>
-                                            <p class="answer"><i></i> <span> </span></p>
-                                            <p><span style="margin-top:8px;">A：戴瑞目前开通电商平台有：亚马逊、京东、天猫、一号店等电商平台？</span>
-                                            </p>
-                                            <p>&nbsp; </p>
-                                            <p><span style="margin-top:8px;"><a
-                                                    href="http://darryring.tmall.com/?spm=a220o.1000855.1997427721.d4918089.bGtU16"><img
-                                                    width="201" height="85" src="images/20150707101641f9d958efff.jpg"
-                                                    alt=""/></a>&nbsp;<a
-                                                    href="http://search.jd.com/search?keyword=%E7%8F%A0%E5%AE%9D&amp;enc=utf-8&amp;qrst=1&amp;ps=addr&amp;rt=1&amp;stop=1&amp;ev=exbrand_DR%20darryring%40&amp;uc=0"><img
-                                                    width="201" height="85" src="images/2015070710170180545692fd.jpg"
-                                                    alt=""/></a>&nbsp;<a
-                                                    href="http://list.yhd.com/c0-0-0/b969402-30038/a-s1-v4-p1-price-d0-f0-m1-rt0-pid-mid0-k%E7%8F%A0%E5%AE%9D/"><img
-                                                    width="201" height="85" src="images/20150707101711e7690bde7f.jpg"
-                                                    alt=""/></a>&nbsp;<a
-                                                    href="http://www.amazon.cn/s/ref=sr_nr_i_0?fst=as%3Aoff&amp;rh=k%3ADarry+Ring%2Ci%3Ajewelry&amp;keywords=Darry+Ring&amp;ie=UTF8&amp;qid=1436234715"><img
-                                                    width="201" height="85" src="images/20150707101722a3e63ffc72.jpg"
-                                                    alt=""/></a></span></p>
-                                            <p></p>
-                                        </div>
-                                        <!--每一条评论左边end-->
-                                        <!--每一条评论右边-->
-                                        <div class="question_right fr">
-                                            <p>该问答是否对您有帮助？<span onClick="addy(37)" id="addy37">(1)是</span> <span
-                                                    onClick="addn(37)" id="addn37">(1)否</span></p>
-                                        </div>
-                                        <!--每一条评论右边end-->
-                                    </div>
-
                                     <div class="every_talk">
                                         <!--每一条评论左边-->
                                         <div class="question_left fl">
@@ -909,7 +1038,7 @@
                     </div>
                     <!--常见问答end-->
                     <!--售后服务-->
-                    <!--                    <div id="wrap" class="xq_it xqbuy_it cmain">-->
+<!--                    <div id="wrap" class="xq_it xqbuy_it cmain">-->
                     <div id="wrap12" class="xq_it xqbuy_it cmain">
                         <div>
                             <img width="980" height="669" alt="" src="images/201411140408514e81071ba7.jpg"/>&nbsp;
@@ -973,68 +1102,68 @@
                         </div>
                     </div>
                 </div>
-<!--                <script>-->
-<!--                    $("#btnyd").click(function () {-->
-<!--                        var slect = $("#ctl00_content_ucrelatedinfo_ucappointment_drpListShop option:checked").val();-->
-<!--                        var name = $("#txtName").val();-->
-<!--                        var tel = $("#txtTel").val();-->
+                <script>
+                    $("#btnyd").click(function () {
+                        var slect = $("#ctl00_content_ucrelatedinfo_ucappointment_drpListShop option:checked").val();
+                        var name = $("#txtName").val();
+                        var tel = $("#txtTel").val();
 
-<!--                        if (slect == "-1") {-->
-<!--                            alert("请选择预约门店");-->
-<!--                            return false;-->
-<!--                        }-->
-<!--                        if (name == "") {-->
-<!--                            alert("请输入姓名！");-->
-<!--                            return false;-->
-<!--                        }-->
-<!--                        if (!checkTel(tel)) {-->
-<!--                            alert("请输入正确的手机号！");-->
-<!--                            $("#txtTel").val("");-->
-<!--                            return false;-->
-<!--                        }-->
+                        if (slect == "-1") {
+                            alert("请选择预约门店");
+                            return false;
+                        }
+                        if (name == "") {
+                            alert("请输入姓名！");
+                            return false;
+                        }
+                        if (!checkTel(tel)) {
+                            alert("请输入正确的手机号！");
+                            $("#txtTel").val("");
+                            return false;
+                        }
 
-<!--                        sendMessage(slect, tel);-->
-
-
-<!--                    });-->
-
-<!--                    function sendMessage(action, tel) {-->
-<!--                        $.get("/API/SendMessageAPI.ashx", {action: action, tel: tel}, function (data) {-->
-<!--                            if (contains(data, "ok", true)) {-->
-<!--                                alert("店铺地址发送成功！");-->
-<!--                                $("#txtTel").val("");-->
-<!--                                $("#txtName").val("");-->
-<!--                            }-->
-<!--                        });-->
-<!--                    }-->
-
-<!--                    function contains(string, substr, isIgnoreCase) {-->
-<!--                        if (isIgnoreCase) {-->
-<!--                            string = string.toLowerCase();-->
-<!--                            substr = substr.toLowerCase();-->
-<!--                        }-->
-<!--                        var startChar = substr.substring(0, 1);-->
-<!--                        var strLen = substr.length;-->
-<!--                        for (var j = 0; j < string.length - strLen + 1; j++) {-->
-<!--                            if (string.charAt(j) == startChar)//如果匹配起始字符,开始查找-->
-<!--                            {-->
-<!--                                if (string.substring(j, j + strLen) == substr)//如果从j开始的字符与str匹配，那ok-->
-<!--                                {-->
-<!--                                    return true;-->
-<!--                                }-->
-<!--                            }-->
-<!--                        }-->
-<!--                        return false;-->
-<!--                    }-->
-
-<!--                    //-->
-<!--                    function checkTel(tel) {-->
-<!--                        var mobile = /^1[3-8]+\d{9}$/;-->
-<!--                        return mobile.test(tel);-->
-<!--                    }-->
+                        sendMessage(slect, tel);
 
 
-<!--                </script>-->
+                    });
+
+                    function sendMessage(action, tel) {
+                        $.get("/API/SendMessageAPI.ashx", {action: action, tel: tel}, function (data) {
+                            if (contains(data, "ok", true)) {
+                                alert("店铺地址发送成功！");
+                                $("#txtTel").val("");
+                                $("#txtName").val("");
+                            }
+                        });
+                    }
+
+                    function contains(string, substr, isIgnoreCase) {
+                        if (isIgnoreCase) {
+                            string = string.toLowerCase();
+                            substr = substr.toLowerCase();
+                        }
+                        var startChar = substr.substring(0, 1);
+                        var strLen = substr.length;
+                        for (var j = 0; j < string.length - strLen + 1; j++) {
+                            if (string.charAt(j) == startChar)//如果匹配起始字符,开始查找
+                            {
+                                if (string.substring(j, j + strLen) == substr)//如果从j开始的字符与str匹配，那ok
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                        return false;
+                    }
+
+                    //
+                    function checkTel(tel) {
+                        var mobile = /^1[3-8]+\d{9}$/;
+                        return mobile.test(tel);
+                    }
+
+
+                </script>
                 <!--预约其他功能end-->
                 <!--浏览过的产品-->
                 <div class="kgd_cp cmain">
@@ -1093,8 +1222,8 @@
                 </div>
                 <!--浏览过的产品end-->
                 <!--验证购买-->
-<!--                <script src="js/click_hide.js" type="text/javascript"></script>-->
-<!--                <script src="js/index_clear.js" type="text/javascript"></script>-->
+                <script src="js/click_hide.js" type="text/javascript"></script>
+                <script src="js/index_clear.js" type="text/javascript"></script>
                 <!--验证身份框-->
                 <div class="yz_password">
                     <div class="yzp_border">
@@ -1160,6 +1289,154 @@
                     </div>
                     <!--close end-->
                 </div>
+                <!--验证身份框end-->
+                <script language="javascript" type="text/javascript">
+                    function backLogin() {
+                        var currentUrl = window.location.href;
+                        window.location.href = "login.html?forward=" + currentUrl;
+                    }
+
+                    function strlength(str) {
+                        num = str.length;
+                        var arr = str.match(/[^\x00-\x80]/ig);
+                        if (arr != null) num += arr.length;
+                        return num;
+                    }
+
+                    String.prototype.replaceAll = function (s1, s2) {
+                        return this.replace(new RegExp(s1, "gm"), s2);
+                    }
+                    $(function () {
+                        $('#addCa').click(function () {
+                            var manHand = $("#ctl00_content_ddlManHandsize").val();
+                            var womanHand = $("#ctl00_content_ddlWomanHandsize").val();
+                            if (manHand == -1 || womanHand == -1) {
+                                alert("请选择手寸。");
+                                return;
+                            }
+                            if ($(".thr_first .iborder").text() == null || $(".thr_first .iborder").text() == "") {
+                                alert("请选择材质");
+                                return;
+                            }
+                            if ($("#manFont").length > 0) {
+                                var mfontlen = strlength($("#manFont").val());
+                                if (mfontlen > 10) {
+                                    alert("男戒刻字数超过了10个字符。");
+                                }
+                            }
+                            if ($("#womanFont").length > 0) {
+                                var wfontlen = strlength($("#womanFont").val());
+                                if (wfontlen > 10) {
+                                    alert("女戒刻字数超过了10个字符。");
+                                }
+                            }
+                            /****
+                             if ($("#manFont").length > 0) {
+            if (strlength($("#manFont").val().replaceAll("♥", "?")) > 8) {
+            alert("男戒刻字数超过了8个字符，中文为2个字符。");
+            return;
+            }
+            }
+                             if ($("#womanFont").length > 0) {
+            if (strlength($("#womanFont").val().replaceAll("♥", "?")) > 8) {
+            alert("女戒刻字数超过了8个字符，中文为2个字符。");
+            return;
+            }
+            }
+                             ****/
+                            if ($("#ipt_font").length > 0) {
+
+                                if ($("#ctl00_content_ddlHandSize").val() == -1) {
+                                    alert("请选择手寸。");
+                                    return;
+                                }
+
+                                //                if (strlength($("#ipt_font").val().replaceAll("♥", "?")) > 8) {
+                                //                    alert("刻字数超过了8个字符，中文为2个字符。");
+                                //                    return;
+                                //                }
+                            }
+                            //判断是否登录
+                            if ('false' == "true") {
+                                $.get("/API/DarryringYzAPI.ashx", {action: 'darryhome'}, function (data) {
+                                    var json = $.parseJSON(data);
+                                    if (json.Status == "true") {
+
+                                        $(".yz_password").hide();
+                                        addCartFun();
+                                        return false;
+                                    } else if (json.MsgCode == "NoPay") {
+                                        $(".notCart").hide();
+                                        $(".haveDarry").hide();
+                                        $(".wgm").hide();
+                                        $('.yz_password').show();
+                                        $('.backall').show();
+                                        $("#noPayOrder").show();
+                                        $("#noPay").text(json.Name);
+                                        return false;
+                                    } else {
+
+                                        //未购买
+                                        //判断购物车中是否存在Darry钻戒
+                                        $.get("/API/DarryringYzAPI.ashx", {action: 'cart'}, function (dat) {
+                                            //购物车中不存在Darry钻戒
+
+                                            if (dat == "false") {
+
+                                                $(".notCart").hide();
+                                                $(".haveDarry").hide();
+                                                $(".wgm").show();
+                                                $('.yz_password').show();
+                                                $('.backall').show();
+
+                                                return false;
+                                            } else {
+                                                $(".yz_password").hide();
+                                                addCartFun();
+                                            }
+                                        });
+                                        //                        $(".wgm").show();
+                                        //                        $('.yz_password').show();
+                                        //                        $('.backall').show();
+                                        //                        alert("23");
+                                    }
+                                });
+
+                            } else {
+                                //未登录
+                                $(".wdl").show();
+                                $('.yz_password').show();
+                                $('.backall').show();
+
+                            }
+                        });
+                        $("#btnBuy").click(function () {
+                            addCartFun();
+                            $(".yz_password").hide();
+                            $(".wdl").hide();
+                            $(".carthave").hide();
+                            $('.yz_password').hide();
+                            $(".toyz_nobuy").hide();
+                            $('.backall').hide();
+                            $(".wgm").hide();
+                            $(".notCart").hide();
+                        });
+                        $("#btnbuy2").click(function () {
+                            addCartFun();
+                        });
+                        $('.yz_close').click(function () {
+                            $(".yz_password").hide();
+                            $(".wdl").hide();
+                            $(".carthave").hide();
+                            $('.yz_password').hide();
+                            $(".toyz_nobuy").hide();
+                            $('.backall').hide();
+                            $(".wgm").hide();
+                            $(".notCart").hide();
+                        });
+
+                    });
+                </script>
             </div>
         </div>
         <!--底部-->
@@ -1187,10 +1464,9 @@
                                 <option value="3">中国台湾</option>
                             </select>
                             <label>先生姓名:</label>
-                            <input type="text" class="lit_txt" id="textName2"
-                                   style="vertical-align: middle;height:22px;width: 130px;"/>
-                            <!--                            <label>身份证号码:</label>-->
-                            <!--                            <input type="text" class="lit_txt" id="textIDCard2" style="vertical-align: middle;height:22px;width: 130px;"/>-->
+                            <input type="text" class="lit_txt" id="textName2" style="vertical-align: middle;height:22px;width: 130px;"/>
+<!--                            <label>身份证号码:</label>-->
+<!--                            <input type="text" class="lit_txt" id="textIDCard2" style="vertical-align: middle;height:22px;width: 130px;"/>-->
                             <span id="btnsub2"></span>
                         </div>
                     </div>
@@ -1313,7 +1589,7 @@
             <span id="log_orderid" style="display:none"></span>
             <span id="log_price" style="display:none"></span>
         </div>
-<!--        <script src="http://wpa.b.qq.com/cgi/wpa.php" charset="utf-8" type="text/javascript"></script>-->
+        <script src="http://wpa.b.qq.com/cgi/wpa.php" charset="utf-8" type="text/javascript"></script>
         <!--客服(2014年8月29日)-->
         <div style="display:none" class="Ffloat_kf">
             <div class="fkf_top">
@@ -1551,124 +1827,88 @@
                       style="cursor: pointer; color:#c2967e; font-size:16px; font-weight:bold;">立即联系在线客服</span>
             </div>
         </div>
-<!--        <script type="text/javascript">-->
-<!--            function showbox(id) {-->
-<!--                getQeestion(id);-->
-<!--                for (var i = 1; i <= 8; i++) {-->
-<!--                    if (i == id) {-->
-<!--                        showdiv(id);-->
-<!--                    } else {-->
-<!--                        hidediv(i);-->
-<!--                    }-->
-<!--                }-->
-<!--            }-->
+        <script type="text/javascript">
+            function showbox(id) {
+                getQeestion(id);
+                for (var i = 1; i <= 8; i++) {
+                    if (i == id) {
+                        showdiv(id);
+                    } else {
+                        hidediv(i);
+                    }
+                }
+            }
 
-<!--            function contenttxt(id, sid) {-->
-<!--                for (var i = 1; i <= 7; i++) {-->
-<!--                    if (i == id) {-->
-<!--                        showtxt(id, sid);-->
-<!--                    } else {-->
-<!--                        hidetxt(i, sid);-->
-<!--                    }-->
-<!--                }-->
+            function contenttxt(id, sid) {
+                for (var i = 1; i <= 7; i++) {
+                    if (i == id) {
+                        showtxt(id, sid);
+                    } else {
+                        hidetxt(i, sid);
+                    }
+                }
 
 
-<!--            }-->
+            }
 
-<!--            function showtxt(id, sid) {-->
-<!--                var objtitle = $("#content_title" + id + "_" + sid);-->
+            function showtxt(id, sid) {
+                var objtitle = $("#content_title" + id + "_" + sid);
 
-<!--                if (objtitle.css("display") == "none") {-->
-<!--                    objtitle.show("fast");-->
-<!--                } else {-->
+                if (objtitle.css("display") == "none") {
+                    objtitle.show("fast");
+                } else {
 
-<!--                    hidetxt(id, sid);-->
-<!--                }-->
-<!--                //$("#"+id).show("fast");-->
-<!--            }-->
+                    hidetxt(id, sid);
+                }
+                //$("#"+id).show("fast");
+            }
 
-<!--            function hidetxt(id, sid) {-->
-<!--                var objtitle = $("#content_title" + id + "_" + sid);-->
-<!--                objtitle.hide("fast");-->
-<!--            }-->
+            function hidetxt(id, sid) {
+                var objtitle = $("#content_title" + id + "_" + sid);
+                objtitle.hide("fast");
+            }
 
-<!--            function hidediv(id) {-->
-<!--                $("#box" + id).hide("fast");-->
+            function hidediv(id) {
+                $("#box" + id).hide("fast");
 
-<!--                $("#li" + id).css({"font-size": "14px", "color": "#7d7d7d"});-->
-<!--            }-->
+                $("#li" + id).css({"font-size": "14px", "color": "#7d7d7d"});
+            }
 
-<!--            function showdiv(id) {-->
-<!--                if ($("#box" + id).css("display") == "none") {-->
-<!--                    $("#box" + id).show("fast");-->
-<!--                    $("#li" + id).css({"font-size": "18px", "color": "#000000"});-->
-<!--                }-->
+            function showdiv(id) {
+                if ($("#box" + id).css("display") == "none") {
+                    $("#box" + id).show("fast");
+                    $("#li" + id).css({"font-size": "18px", "color": "#000000"});
+                }
 
-<!--            }-->
+            }
 
-<!--        </script>-->
-<!--        <script type="text/javascript">-->
-<!--            function showMask() {-->
-<!--                $("#masks").css("height", $(document).height());-->
-<!--                $("#masks").css("width", $(document).width());-->
-<!--                $("#masks").fadeIn();-->
-<!--            }-->
+        </script>
+        <script type="text/javascript">
+            function showMask() {
+                $("#masks").css("height", $(document).height());
+                $("#masks").css("width", $(document).width());
+                $("#masks").fadeIn();
+            }
 
-<!--            function showModel(divName) {-->
-<!--                showMask();-->
-<!--                /* var top = ($(window).height() - $(divName).height()) / 5;-->
-<!--                 var left = ($(window).width() - $(divName).width()) / 2;-->
-<!--                 var scrollTop = $(document).scrollTop();-->
-<!--                 var scrollLeft = $(document).scrollLeft();*/-->
-<!--                $(divName).fadeIn();-->
-<!--            }-->
+            function showModel(divName) {
+                showMask();
+                /* var top = ($(window).height() - $(divName).height()) / 5;
+                 var left = ($(window).width() - $(divName).width()) / 2;
+                 var scrollTop = $(document).scrollTop();
+                 var scrollLeft = $(document).scrollLeft();*/
+                $(divName).fadeIn();
+            }
 
-<!--            function CloseMaskser() {-->
+            function CloseMaskser() {
 
-<!--                $("#modelsever").fadeOut("slow");-->
-<!--                $("#masks").fadeOut("slow");-->
-<!--                $("#mask").fadeOut("slow");-->
-<!--            }-->
+                $("#modelsever").fadeOut("slow");
+                $("#masks").fadeOut("slow");
+                $("#mask").fadeOut("slow");
+            }
 
-<!--        </script>-->
-
-        <script>
-            $(function(){
-
-                var pid = $("#pid").val();//获取商品id
-
-                $("#comment").click(function(){
-                    $.post("/dr-comment/comments?pid=" + pid, function (data) {
-                        $("#wrap13").html(data);
-                    });
-                });
-
-                //添加购物车
-                $("#addToCart").click(function(){
-                    $.post("/dr-cart/addToCart?pid=" + pid, function (data) {
-                        if(data == true){
-                            alert("添加购物车成功!")
-                        }else if(data == "noUser"){
-                            alert("您还没有登录,请先登录!");
-                            window.location.href = "login.html";
-                        }
-                    });
-                });
-
-                $(window).ready(function(){
-                    $.post("/dr-comment/count?pid=" + pid, function (data) {
-                        if(data != null){
-                            $("#commentDataCount").text("(" + data + ")");
-                        }
-                    });
-                });
-
-            });
         </script>
 
-
     </div>
-
 </form>
 </body>
 </html>

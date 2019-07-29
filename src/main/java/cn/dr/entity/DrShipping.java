@@ -31,6 +31,7 @@ public class DrShipping implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+
     /**
      * 用户id
      */

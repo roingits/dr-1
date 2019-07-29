@@ -2,13 +2,4 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.dr.mapper.DrCartMapper">
 
-    <select id="getCartProductByUid" parameterType="java.lang.Integer" resultType="java.util.HashMap">
-        SELECT c.id,p.name,t.texture_name,c.custom,p.price
-            FROM dr_cart c
-            INNER JOIN dr_product p ON c.product_id = p.id
-            INNER JOIN dr_texture t ON p.texture_id = t.id
-        WHERE c.user_id = #{uid}
-    </select>
-
-
 </mapper>

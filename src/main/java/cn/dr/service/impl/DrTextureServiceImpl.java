@@ -28,9 +28,4 @@ public class DrTextureServiceImpl extends ServiceImpl<DrTextureMapper, DrTexture
     public List<DrTexture> getTextureList() {
         return drTextureMapper.selectList(null);
     }
-
-    @Override
-    public DrTexture getTexttureById(Integer tid) {
-        return drTextureMapper.selectById(tid);
-    }
 }

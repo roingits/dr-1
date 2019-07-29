@@ -1,4 +1,4 @@
-﻿﻿<html xmlns="http://www.w3.org/1999/xhtml" class="hb-loaded" xmlns:th="http://www.thymeleaf.org">
+﻿<html xmlns="http://www.w3.org/1999/xhtml" class="hb-loaded" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>钻戒列表</title>
     <meta content="Darry Ring钻戒价格,Darry Ring钻戒图片" name="Keywords"/>
@@ -304,16 +304,16 @@
                             <em th:if="${lbCurrent > 1}" class="page_up no_paget" id="em_up">上一页</em>
                             <em th:if="${lbTot > lbCurrent}" class="page_down" id="em_down">下一页</em>
                             <div style="padding-right: 0px;margin-right: 0px">
-                                <p class="pag_p fl"><span>共<i th:text="${lbTot}"></i>页，到第</span> <input type="text" th:value="${lbCurrent}" class="pag_txt" id="pageing_pag_txt"-->页
-                                    <input id="page_index" type="button" class="pag_bt" value="确定">
+                            <p class="pag_p fl"><span>共<i th:text="${lbTot}"></i>页，到第</span> <input type="text" th:value="${lbCurrent}" class="pag_txt" id="pageing_pag_txt"-->页
+                            <input id="page_index" type="button" class="pag_bt" value="确定">
                             </div>
-                            <!--                            <span style="display:none" th:value="${lbTot}">5</span>-->
+                                <!--                            <span style="display:none" th:value="${lbTot}">5</span>-->
                             <!--                            <input type="submit" style="display:none" id="btnUp" class="page_up" value="上一页" name="btnUp"/>-->
                             <!--                            <input type="submit" style="display:none" id="btnNext"  class="page_down" value="下一页" name="btnNext"/>-->
                         </div>
                         <div  class="thesec_word-left fl">
                             <span>排序：</span>
-                            <b id="sort_type"> <i  id="i_rq">按人气</i> <i id="i_xl">按销量</i> <i th:classappend="${sort_by }== price ? sOrder : none" value="price" id="i_jg">按价格</i> </b>
+                            <b id="sort_type"> <i  id="i_rq">按人气</i> <i id="i_xl">按销量</i> <i value="price" id="i_jg">按价格</i> </b>
                             <input type="hidden" id="sort_by" value="" >
                         </div>
                     </div>
@@ -330,7 +330,7 @@
                     <!--  遍历生成   -->
                     <li th:each="product : ${products}">
                         <div class="by_top">
-                            <a target="_blank" th:text="${product.name}" th:href="@{'/detail.html?pid='+${product.id}}" ></a>
+                            <a target="_blank" th:text="${product.name}" href="/darry_ring/${product.id}.html"></a>
                             <div class="bything-one">
                                 <img width="236px" height="236" alt="${product.name}"
                                      src="images/2014090119350717386d7a1e.jpg"/>
@@ -371,22 +371,22 @@
             </div>
 
             <div class="paging_all" id="pageing_pagingDiv">
-                <!--                <div class="paging_all-cort">-->
-                <!--                    <ul class="paging fl">-->
-                <!--                        <li class="pli pag_gray">&lt;&lt;上一页</li>-->
-                <!--                        <li class="pag_gray">1</li>-->
-                <!--                        <li>2</li>-->
-                <!--                        <li>3</li>-->
-                <!--                        <li>4</li>-->
-                <!--                        <li>5</li>-->
-                <!--                        <li class="pli2">下一页&gt;&gt;</li>-->
-                <!--                    </ul>-->
-                <!--                    <p class="pag_p fl"><span>共5页，到第</span> <input type="text" class="pag_txt" id="pageing_pag_txt"-->
-                <!--                                                                   name="pageing$pag_txt"/>页 <input type="button"-->
-                <!--                                                                                                    class="pag_bt"-->
-                <!--                                                                                                    onClick="__CurrentPaging.PageIndexChaned($('#pageing_pag_txt').val());$('#pageing_pag_txt').val('');"-->
-                <!--                                                                                                    value="确定"/></p>-->
-                <!--                </div>-->
+<!--                <div class="paging_all-cort">-->
+<!--                    <ul class="paging fl">-->
+<!--                        <li class="pli pag_gray">&lt;&lt;上一页</li>-->
+<!--                        <li class="pag_gray">1</li>-->
+<!--                        <li>2</li>-->
+<!--                        <li>3</li>-->
+<!--                        <li>4</li>-->
+<!--                        <li>5</li>-->
+<!--                        <li class="pli2">下一页&gt;&gt;</li>-->
+<!--                    </ul>-->
+<!--                    <p class="pag_p fl"><span>共5页，到第</span> <input type="text" class="pag_txt" id="pageing_pag_txt"-->
+<!--                                                                   name="pageing$pag_txt"/>页 <input type="button"-->
+<!--                                                                                                    class="pag_bt"-->
+<!--                                                                                                    onClick="__CurrentPaging.PageIndexChaned($('#pageing_pag_txt').val());$('#pageing_pag_txt').val('');"-->
+<!--                                                                                                    value="确定"/></p>-->
+<!--                </div>-->
             </div>
             <!--分页end-->
             <!--分页end-->
@@ -614,6 +614,24 @@
             <span style="cursor: pointer" class="sszs">稍后再说</span>
             <span class="xzzx"><a onClick="showxiaon()" style="cursor: pointer" id="chatnow"> 现在咨询</a></span>
             <div style="cursor: pointer" class="tocclose">
+            </div>
+        </div>
+    </div>
+    <div class="mask" id="masks">
+    </div>
+    <div style="display:none;" class="modelsever" id="modelsever">
+        <div class="cs_top">
+            <div class="cs_topcenter">
+                <div style="width:300px; height:40px; line-height:40px; float:left; display:inline-block; ">
+                    顾客常见疑问
+                </div>
+                <div style="width:385px; height:20px; float:left; text-align:right; padding-top:20px;">
+                    <img width="55" height="9" style="cursor: pointer;" onClick="CloseMaskser()"
+                         src="images/popup_window_btn_close.gif"/>
+                </div>
+            </div>
+        </div>
+        <div class="cs_content clear">
             <ul>
                 <li onClick="showbox(1)" id="li1">官网店铺</li>
                 <li class="line">/</li>
@@ -762,13 +780,6 @@
                   style="cursor: pointer; color:#c2967e; font-size:16px; font-weight:bold;">立即联系在线客服</span>
         </div>
     </div>
-    <style>
-
-        .sOrder{
-            background: #c6a34d;
-        }
-    </style>
-
     <script type="text/javascript">
         function showbox(id) {
             getQeestion(id);
@@ -885,21 +896,6 @@
                     var newPageNum = parseInt($("#pageing_pag_txt").val());
                     $("#lbCurrent").val(newPageNum);//更改当前页码并发送请求获取商品信息
                     getProductList();
-                });
-                //商品排序方式
-                $("#sort_type i").click(function(){
-                    var type = $(this).attr("value");
-                    if(type == "price"){
-
-                        if($(this).hasClass("sOrder")){
-                            $("#sort_by").val("");
-                            $(this).removeClass("sOrder");
-                        }else{
-                            $("#sort_by").val("price");
-                            $(this).addClass("sOrder");
-                        }
-                        getProductList();
-                    }
                 });
             }
 

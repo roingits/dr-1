@@ -21,11 +21,4 @@ public interface IDrTextureService extends IService<DrTexture> {
      */
     List<DrTexture> getTextureList();
 
-    /**
-     * 根据分类id获取分类信息
-     * @param tid
-     * @return
-     */
-    DrTexture getTexttureById(Integer tid);
-
 }

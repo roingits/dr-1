@@ -18,13 +18,15 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -262,15 +264,41 @@ public class DrUserController {
 
     /**
      * 所有地址数据
+     *
      * @return
      */
     @GetMapping("/getAddress")
-    public List getAddress(){
+    public List getAddress() {
         HttpSession session = (HttpSession) s.get(sessionId);
         DrUser drUser = (DrUser) session.getAttribute("user");
-        Integer id=drUser.getId();
-        List<DrShipping> shipList=iDrShippingService.findAllDrShippingByUserId(id);
+        Integer id = drUser.getId();
+        List<DrShipping> shipList = iDrShippingService.findAllDrShippingByUserId(id);
         return shipList;
+    }
+
+    /**
+     * 添加或者保存
+     *
+     * @param drShipping
+     * @return
+     */
+    @PostMapping("/updateAddress")
+    public String updateAddress(DrShipping drShipping) {
+        System.out.println(drShipping);
+        HttpSession session = (HttpSession) s.get(sessionId);
+        DrUser drUser = (DrUser) session.getAttribute("user");
+        drShipping.setUserId(drUser.getId());  //获取session中用户id
+        int num = 0; //用于存储受影响行数
+        //如果收货地址id为空，则是添加
+        if (drShipping.getId() == null) {
+            num = iDrShippingService.addAddressAll(drShipping);
+        } else {
+            num = iDrShippingService.updateAddress(drShipping);
+        }
+        if (num > 0) {
+            return "true";
+        }
+        return "false";
     }
 
 

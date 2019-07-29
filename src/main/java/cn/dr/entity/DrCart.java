@@ -47,11 +47,6 @@ public class DrCart implements Serializable {
     private Integer quantity;
 
     /**
-     * 刻字
-     */
-    private String custom;
-
-    /**
      * 创建时间
      */
     private LocalDateTime createTime;
